@@ -14,7 +14,7 @@ export default class Recipe{
         let ingredients = ``
         this._ingredients.forEach(ingredient => {
             const ingredientUnit = ingredient.unit ? ingredient.unit : ""
-            ingredients += `<span>${ingredient.ingredient} : ${ingredient.quantity} ${ingredientUnit}</span><br>`
+            ingredients += `<span class="ingredient__name">${ingredient.ingredient} :</span><span> ${ingredient.quantity} ${ingredientUnit}</span><br>`
             
         })
         return(ingredients)

@@ -1,4 +1,8 @@
-@import './base/reset', './components/header', './base/typo';
+@import './base/reset', './utils/variable','./layout/header', './base/typo', './components/card','./pages/index';
+
+html{
+    font-size: 62.5%;
+}
 
 body {
     font-family: $fontfam;

@@ -7,34 +7,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les petits plats</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style/style.css">
+
     <script src="https://kit.fontawesome.com/a53308940c.js" crossorigin="anonymous">
     </script>
+
     <script src="/scripts/pages/index.js" type="module"></script>
 </head>
 
 <body>
     <header>
-        <div class="row gx-0 my-2">
-            <h1 class="hidden">Les petits plats</h1>
-            <img class="logo" src="/asset/img/logo.png" alt="logo les petits plats">
-        </div>
+        <h1 class="hidden">Les petits plats</h1>
+        <img class="logo" src="/asset/img/logo.png" alt="logo les petits plats">
     </header>
 
-    <body>
-        <section class="row gx-0 gy-2 search-container mx-5">
-            <input type="text" placeholder="Rechercher une recette">
-            <div class="tags-container">
-                <button class="btn btn-primary col-2">Ingredients</button>
-                <button class="btn btn-success col-2">Appareil</button>
-                <button class="btn btn-danger col-2">Ustensiles</button>
+    <main>
+        <section class="search">
+            <div class="search__input">
+                <input type="text" placeholder="Rechercher une recette" id="search__text">
+                <label class="search__icon" for="search__text">
+                    <span class="hidden">rechercher une recette</span>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </label>
+            </div>
+            <div class="tags">
+                <div class="tags__search">
+                    <button class="tags__ingredients tags__btn">Ingredients
+                        <span class="tags__chevron"><i class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                    <button class="tags__appliance tags__btn">Appareil
+                        <span class="tags__chevron"><i class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                    <button class="tags__ustensils tags__btn">Ustensiles
+                        <span class="tags__chevron"><i class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                </div>
             </div>
         </section>
         <section class="recipes">
 
         </section>
-    </body>
+    </main>
 </body>
 
 </html>

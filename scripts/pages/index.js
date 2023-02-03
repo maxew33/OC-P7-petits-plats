@@ -9,7 +9,7 @@ async function main(){
 
     const recipesInfos = await api.getRecipes()
 
-    console.log(recipesInfos)
+// todo : essayer de sortir l'appendchild de la boucle
 
     recipesInfos
     .map(recipe => new Recipe(recipe))

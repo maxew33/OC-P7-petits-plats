@@ -143,10 +143,137 @@ a:visited {
   width: 0;
 }
 
+header {
+  display: flex;
+}
+
 .logo {
-  max-width: 268px;
+  max-width: 26rem;
   height: auto;
+  margin: 1.7rem auto;
+}
+
+.card {
+  width: 30%;
+  height: 36rem;
+  background: #e7e7e7;
+  border-radius: 5px;
+}
+
+.card__img {
+  background: #C7BEBE;
+  width: 100%;
+  height: 50%;
+  border-radius: 5px 5px 0 0;
+}
+
+.card__text {
+  border-radius: 0 0 5px 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.card__text .card__section {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.card__text .card__element {
+  width: 45%;
+}
+.card__text .card__name {
+  width: 65%;
+  font-size: 1.8rem;
+}
+.card__text .card__duration {
+  width: 25%;
+  text-align: right;
+}
+.card__text .card__ingredients,
+.card__text .card__description {
+  font-size: 1.2rem;
+}
+.card__text .card__ingredients .ingredient__name {
+  font-weight: bold;
+}
+
+section {
+  max-width: 1400px;
   margin: auto;
+  font-size: 1.8rem;
+}
+
+.tags__btn, #search__text {
+  height: 7rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.8rem;
+}
+
+.search__input {
+  position: relative;
+}
+.search__input #search__text {
+  background: #e7e7e7;
+  width: 100%;
+}
+.search__input #search__text::-moz-placeholder {
+  color: #C7BEBE;
+  padding-left: 15px;
+}
+.search__input #search__text:-ms-input-placeholder {
+  color: #C7BEBE;
+  padding-left: 15px;
+}
+.search__input #search__text::placeholder {
+  color: #C7BEBE;
+  padding-left: 15px;
+}
+.search__input .search__icon {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tags {
+  padding-top: 25px;
+  min-height: 17rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.tags__search .tags__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  min-width: 17rem;
+  margin-right: 1.5rem;
+  cursor: pointer;
+}
+.tags__search .tags__btn:nth-child(1) {
+  background: #3282F7;
+}
+.tags__search .tags__btn:nth-child(2) {
+  background: #68D9A4;
+}
+.tags__search .tags__btn:nth-child(3) {
+  background: #ED6454;
+}
+
+.recipes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5rem 0;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 body {

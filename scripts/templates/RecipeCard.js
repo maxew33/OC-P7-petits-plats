@@ -6,18 +6,22 @@ export default class RecipeCard{
     createRecipeCard(){
         const $container = document.createElement('article')
 
-        $container.classList.add('recipe', 'col-12')
+        $container.classList.add('card')
 
         const {name, ingredients, time, description} = this._recipe
 
         const cardContent = `
-        <div class="illus">
+        <div class="card__img">
         </div>
-        <div class="text">
-            <div class="name col-5">${name}</div>
-            <div class="duration col-7 text-end">${time}</div>
-            <div class="ingredients col-5">${ingredients}</div>
-            <div class="description col-7">${description}</div>
+        <div class="card__text">
+            <div class="card__section">            
+                <p class="card__element card__name">${name}</p>
+                <p class="card__element card__duration"><i class="fa-regular fa-clock"></i> ${time} min</p>
+            </div>
+            <div class="card__section"> 
+                <p class="card__element card__ingredients">${ingredients}</p>
+                <p class="card__element card__description">${description}</p>
+            </div>
         </div>
         `
 

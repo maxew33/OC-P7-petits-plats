@@ -5,8 +5,12 @@
     width: 0;
 }
 
+header{
+    display: flex;
+}
+
 .logo{
-    max-width: 268px;
+    max-width: 26rem;
     height: auto;
-    margin: auto;
+    margin: 1.7rem auto;
 }
