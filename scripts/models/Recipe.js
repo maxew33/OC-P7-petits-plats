@@ -20,6 +20,12 @@ export default class Recipe{
         return(ingredients)
     }
 
+    get ingredientsArray(){
+        let ingredientsArray = []
+        this._ingredients.forEach(ingredient => ingredientsArray.push(ingredient.ingredient))
+        return(ingredientsArray)
+    }
+
     get name(){
         return(this._name)
     }
