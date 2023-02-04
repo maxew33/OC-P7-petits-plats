@@ -4,7 +4,9 @@ import RecipeCard from "../templates/RecipeCard.js"
 
 const api = new Api('data/recipes.json'),
     recipesContainer = document.querySelector('.recipes'),
-    ingredientsArray = []
+    ingredientsArray = [],
+    descriptionArray = [],
+    ustensilsArray = []
 
 async function main() {
 
@@ -17,12 +19,19 @@ async function main() {
         .forEach(recipe => {
             const card = new RecipeCard(recipe)
             const myCard = card.createRecipeCard()
+            
             recipesContainer.appendChild(myCard)
 
-            recipe.ingredientsArray.forEach(ingredient => ingredientsArray.indexOf(ingredient)===-1 && ingredientsArray.push(ingredient))
+            const myArrays = [[recipe.ingredientsArray, ingredientsArray], [recipe.descriptionArray, descriptionArray], [recipe.ustensilsArray, ustensilsArray]]
+            myArrays.forEach(array => fillArrays(array[0], array[1]))
         })
 
-        console.log(ingredientsArray)
+    console.log(ingredientsArray, descriptionArray, ustensilsArray)
+}
+
+const fillArrays = (arrayValues, arrayToFill) => {
+    arrayValues.forEach(elt => arrayToFill.indexOf(elt) === -1 && arrayToFill.push(elt))
+    console.log()
 }
 
 main()

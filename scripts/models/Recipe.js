@@ -10,12 +10,23 @@ export default class Recipe{
         this._ustensils = data.ustensils 
     }
 
+    get id(){
+        return(this._id)
+    }
+
+    get name(){
+        return(this._name)
+    }
+
+    get servings(){
+        return(this._servings)
+    }
+
     get ingredients(){
         let ingredients = ``
         this._ingredients.forEach(ingredient => {
             const ingredientUnit = ingredient.unit ? ingredient.unit : ""
             ingredients += `<span class="ingredient__name">${ingredient.ingredient} :</span><span> ${ingredient.quantity} ${ingredientUnit}</span><br>`
-            
         })
         return(ingredients)
     }
@@ -26,15 +37,27 @@ export default class Recipe{
         return(ingredientsArray)
     }
 
-    get name(){
-        return(this._name)
-    }
-
     get time(){
         return(this._time)
     }
 
     get description(){
         return(this._description)
+    }
+
+    get descriptionArray(){
+        const descriptionArray = this._description.split(' ')
+        const filteredDescriptionArray = descriptionArray.filter(word => word.length > 2)
+        return(filteredDescriptionArray)
+    }
+
+    get appliance(){
+        return(this._appliance)
+    }
+
+    get ustensilsArray(){
+        let ustensilsArray = []
+        this._ustensils.forEach(ustensil=> ustensilsArray.push(ustensil))
+        return(ustensilsArray)
     }
 }
