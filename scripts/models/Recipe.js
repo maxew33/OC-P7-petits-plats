@@ -55,8 +55,13 @@ export default class Recipe{
         return(this._appliance)
     }
 
+    get applianceArray(){
+        const applianceArray = [this._appliance]
+        return(applianceArray)
+    }
+
     get ustensilsArray(){
-        let ustensilsArray = []
+        const ustensilsArray = []
         this._ustensils.forEach(ustensil=> ustensilsArray.push(ustensil))
         return(ustensilsArray)
     }

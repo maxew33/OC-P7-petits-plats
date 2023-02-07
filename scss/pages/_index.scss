@@ -4,7 +4,8 @@ section {
     font-size: 1.8rem;
 }
 
-.tags__btn, #search__text{
+.tags__btn,
+#search__text {
     height: 7rem;
     border: none;
     border-radius: 5px;
@@ -33,7 +34,7 @@ section {
     }
 }
 
-.tags{    
+.tags {
     padding-top: 25px;
     min-height: 17rem;
     display: flex;
@@ -42,27 +43,45 @@ section {
 
 .tags__search {
 
-    .tags__btn {
+    .tags__wrapper {
+        position: relative;
         display: inline-flex;
         align-items: center;
         justify-content: space-around;
-        color: white;
-        min-width: 17rem;
-        margin-right: 1.5rem;
-        cursor: pointer;
 
-        &:nth-child(1) {
+        & .tags__btn {
+            color: white;
+            min-width: 17rem;
+            margin-right: 1.5rem;
+            cursor: pointer;
+        }
+
+        & .tags__ingredients {
             background: $blue;
         }
 
-        &:nth-child(2) {
+        & .tags__appliance {
             background: $green;
         }
 
-        &:nth-child(3) {
+        & .tags__ustensils {
             background: $orange;
         }
+
+        & .tags__list{
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: red;
+        }
     }
+}
+
+.tags__wrapper:hover > .tags__list{
+    display: block;
 }
 
 

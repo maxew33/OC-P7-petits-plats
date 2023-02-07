@@ -193,9 +193,13 @@ header {
 .card__text .card__ingredients,
 .card__text .card__description {
   font-size: 1.2rem;
+  max-height: 12rem;
 }
 .card__text .card__ingredients .ingredient__name {
   font-weight: bold;
+}
+.card__text .card__description {
+  overflow: hidden;
 }
 
 section {
@@ -204,7 +208,8 @@ section {
   font-size: 1.8rem;
 }
 
-.tags__btn, #search__text {
+.tags__btn,
+#search__text {
   height: 7rem;
   border: none;
   border-radius: 5px;
@@ -245,23 +250,39 @@ section {
   flex-direction: column;
 }
 
-.tags__search .tags__btn {
+.tags__search .tags__wrapper {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: space-around;
+}
+.tags__search .tags__wrapper .tags__btn {
   color: white;
   min-width: 17rem;
   margin-right: 1.5rem;
   cursor: pointer;
 }
-.tags__search .tags__btn:nth-child(1) {
+.tags__search .tags__wrapper .tags__ingredients {
   background: #3282F7;
 }
-.tags__search .tags__btn:nth-child(2) {
+.tags__search .tags__wrapper .tags__appliance {
   background: #68D9A4;
 }
-.tags__search .tags__btn:nth-child(3) {
+.tags__search .tags__wrapper .tags__ustensils {
   background: #ED6454;
+}
+.tags__search .tags__wrapper .tags__list {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: red;
+}
+
+.tags__wrapper:hover > .tags__list {
+  display: block;
 }
 
 .recipes {

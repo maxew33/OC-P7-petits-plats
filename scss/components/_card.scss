@@ -42,12 +42,17 @@
     .card__ingredients,
     .card__description {
         font-size: 1.2rem;
+        max-height: 12rem;
     }
 
     .card__ingredients {
         .ingredient__name {
             font-weight: bold;
         }
+    }
+
+    .card__description{
+        overflow: hidden;
     }
 
 }
