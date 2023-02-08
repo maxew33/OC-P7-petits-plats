@@ -217,18 +217,18 @@ section {
 
 .search__input {
   position: relative;
+  margin: auto;
 }
 .search__input #search__text {
   background: #e7e7e7;
-  width: 100%;
+  padding: 0 2rem;
+  width: calc(100% - 4rem);
 }
 .search__input #search__text::-moz-placeholder {
   color: #C7BEBE;
-  padding-left: 15px;
 }
 .search__input #search__text::placeholder {
   color: #C7BEBE;
-  padding-left: 15px;
 }
 .search__input .search__icon {
   cursor: pointer;
@@ -249,7 +249,8 @@ section {
   display: flex;
   gap: 1.5rem;
 }
-.tags__search .tags__wrapper {
+
+.tags__wrapper {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -259,22 +260,25 @@ section {
   border-radius: 5px;
   transition: flex-basis 0.25s cubic-bezier(0.6, 0.6, 0.8, 1.2);
 }
-.tags__search .tags__wrapper .tags__btn, .tags__search .tags__wrapper .tags__list {
+.tags__wrapper .tags__btn, .tags__wrapper .tags__list {
   color: white;
   background-color: inherit;
   border-radius: inherit;
+}
+.tags__wrapper .tags__btn {
   cursor: pointer;
 }
-.tags__search .tags__wrapper.ingredients__wrapper {
+.tags__wrapper.ingredients__wrapper {
   background: #3282F7;
 }
-.tags__search .tags__wrapper.appliance__wrapper {
+.tags__wrapper.appliance__wrapper {
   background: #68D9A4;
 }
-.tags__search .tags__wrapper.ustensils__wrapper {
+.tags__wrapper.ustensils__wrapper {
   background: #ED6454;
 }
-.tags__search .tags__wrapper .tags__list {
+
+.tags__list {
   position: absolute;
   display: none;
   top: 0;
@@ -283,15 +287,38 @@ section {
   width: 51rem;
   background: inherit;
 }
-.tags__search .tags__wrapper .tags__list ul {
+.tags__list ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  line-height: 2;
+  gap: 1.25rem;
+  padding: 0 1.5rem;
+}
+.tags__list ul li {
+  cursor: pointer;
+}
+.tags__list .tags__input {
+  border: none;
+  background: none;
+  width: 100%;
+  line-height: 2;
+  font-size: 1.8rem;
+}
+.tags__list .tags__input::-moz-placeholder {
+  color: white;
+  opacity: 0.5;
+  padding-left: 15px;
+}
+.tags__list .tags__input::placeholder {
+  color: white;
+  opacity: 0.5;
+  padding-left: 15px;
 }
 
-.tags__wrapper:hover {
+.tags__wrapper.tags__wrapper-active {
   flex: 0 0 51rem;
 }
-.tags__wrapper:hover > .tags__list {
+.tags__wrapper.tags__wrapper-active > .tags__list {
   overflow-x: hidden;
   overflow-y: auto;
   display: block;

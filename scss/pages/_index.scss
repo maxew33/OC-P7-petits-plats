@@ -13,14 +13,15 @@ section {
 
 .search__input {
     position: relative;
+    margin: auto;
 
     #search__text {
         background: $light-grey;
-        width: 100%;
+        padding: 0 2rem;
+        width: calc(100% - 4rem);
 
         &::placeholder {
             color: $dark-grey;
-            padding-left: 15px;
         }
     }
 
@@ -43,57 +44,83 @@ section {
 .tags__search {
     display: flex;
     gap: 1.5rem;
+}
 
-    .tags__wrapper {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: space-around;
-        max-height: 25rem;
-        flex: 0 0 17rem;
-        border-radius: 5px;
-        transition: flex-basis .25s cubic-bezier(.6, .6, .80, 1.2);
+.tags__wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+    max-height: 25rem;
+    flex: 0 0 17rem;
+    border-radius: 5px;
+    transition: flex-basis .25s cubic-bezier(.6, .6, .80, 1.2);
 
-        & .tags__btn,
-        & .tags__list {
-            color: white;
-            // width: 100%;
-            // min-width: 17rem;
-            background-color: inherit;
-            border-radius: inherit;
+    & .tags__btn,
+    & .tags__list {
+        color: white;
+        // width: 100%;
+        // min-width: 17rem;
+        background-color: inherit;
+        border-radius: inherit;
+    }
+
+    & .tags__btn {
+        cursor: pointer;
+    }
+
+    &.ingredients__wrapper {
+        background: $blue;
+    }
+
+    &.appliance__wrapper {
+        background: $green;
+    }
+
+    &.ustensils__wrapper {
+        background: $orange;
+    }
+}
+
+.tags__list {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    max-height: 0;
+    width: 51rem;
+    background: inherit;
+
+    ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        line-height: 2;
+        gap: 1.25rem;
+        padding: 0 1.5rem;
+
+        & li{
             cursor: pointer;
         }
+    }
 
-        &.ingredients__wrapper {
-            background: $blue;
-        }
+    .tags__input {
+        border: none;
+        background: none;
+        width: 100%;
+        line-height: 2;
+        font-size: 1.8rem;
 
-        &.appliance__wrapper {
-            background: $green;
-        }
-
-        &.ustensils__wrapper {
-            background: $orange;
-        }
-
-        & .tags__list {
-            position: absolute;
-            display: none;
-            top: 0;
-            left: 0;
-            max-height: 0;
-            width: 51rem;
-            background: inherit;
-
-            ul {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-            }
+        &::placeholder {
+            color: white;
+            opacity: .5;
+            padding-left: 15px;
         }
     }
 }
 
-.tags__wrapper:hover {
+
+
+.tags__wrapper.tags__wrapper-active {
 
     flex: 0 0 51rem;
 
@@ -110,7 +137,6 @@ section {
         max-height: 40rem;
     }
 }
-
 
 
 .recipes {
