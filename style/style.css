@@ -226,10 +226,6 @@ section {
   color: #C7BEBE;
   padding-left: 15px;
 }
-.search__input #search__text:-ms-input-placeholder {
-  color: #C7BEBE;
-  padding-left: 15px;
-}
 .search__input #search__text::placeholder {
   color: #C7BEBE;
   padding-left: 15px;
@@ -265,8 +261,6 @@ section {
 }
 .tags__search .tags__wrapper .tags__btn, .tags__search .tags__wrapper .tags__list {
   color: white;
-  width: 100%;
-  min-width: 17rem;
   background-color: inherit;
   border-radius: inherit;
   cursor: pointer;
@@ -285,8 +279,8 @@ section {
   display: none;
   top: 0;
   left: 0;
+  max-height: 0;
   width: 51rem;
-  height: 25rem;
   background: inherit;
 }
 .tags__search .tags__wrapper .tags__list ul {
@@ -301,20 +295,12 @@ section {
   overflow-x: hidden;
   overflow-y: auto;
   display: block;
-  height: 0rem;
-  -webkit-animation: 0.25s displaying 0.25s linear forwards;
-          animation: 0.25s displaying 0.25s linear forwards;
-}
-
-@-webkit-keyframes displaying {
-  to {
-    height: 40rem;
-  }
+  animation: 0.25s displaying 0.25s linear forwards;
 }
 
 @keyframes displaying {
   to {
-    height: 40rem;
+    max-height: 40rem;
   }
 }
 .recipes {
