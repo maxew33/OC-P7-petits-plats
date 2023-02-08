@@ -20,9 +20,10 @@
     justify-content: space-around;
 
     .card__section {
-        width: 100%;
+        width: calc(100% - 4rem);
         display: flex;
         justify-content: space-around;
+        padding: 2rem 2rem 0 2rem;
     }
 
     .card__element {
@@ -42,7 +43,8 @@
     .card__ingredients,
     .card__description {
         font-size: 1.2rem;
-        max-height: 12rem;
+        max-height: 9rem;
+        line-height: 1.25;
     }
 
     .card__ingredients {
