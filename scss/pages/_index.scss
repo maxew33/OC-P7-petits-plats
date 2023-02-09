@@ -54,12 +54,12 @@ section {
     max-height: 25rem;
     flex: 0 0 17rem;
     border-radius: 5px;
-    transition: flex-basis .25s cubic-bezier(.6, .6, .80, 1.2);
+    transition: flex-basis .25s cubic-bezier(.6, .6, .80, 1.25);
 
     & .tags__btn,
     & .tags__list {
         color: white;
-        // width: 100%;
+        width: 100%;
         // min-width: 17rem;
         background-color: inherit;
         border-radius: inherit;
@@ -118,9 +118,7 @@ section {
     }
 }
 
-
-
-.tags__wrapper.tags__wrapper-active {
+.tags__wrapper[aria-expanded="true"] {
 
     flex: 0 0 51rem;
 
@@ -129,6 +127,26 @@ section {
         overflow-y: auto;
         display: block;
         animation: .25s displaying .25s linear forwards;
+
+        &::-webkit-scrollbar {
+            width: 10px;
+          }
+          
+          /* Track */
+          &::-webkit-scrollbar-track {
+            background: transparent;
+          }
+          
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: $light-grey;
+            border-radius: 5px;
+          }
+          
+          /* Handle on hover */
+          &::-webkit-scrollbar-thumb:hover {
+            background: $dark-grey;
+          }
     }
 }
 

@@ -3,15 +3,16 @@ export default class RecipeCard{
         this._recipe = recipe
     }
 
-    createRecipeCard(){
+    createRecipeCard(){        
+        const {name, ingredients, time, description, id} = this._recipe
+
         const $container = document.createElement('article')
 
         $container.classList.add('card')
-
-        const {name, ingredients, time, description} = this._recipe
+        $container.dataset.id=id
 
         const cardContent = `
-        <div class="card__img">
+        <div class="card__img" data-id="${id}">
         </div>
         <div class="card__text">
             <div class="card__section">            
