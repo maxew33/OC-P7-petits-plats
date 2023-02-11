@@ -17,7 +17,9 @@ const api = new Api('data/recipes.json'),
     descriptionArray = [],
     tagsArray = [{ ingredients: ingredientsArray }, { appliance: applianceArray }, { ustensils: ustensilsArray }],
     recipesTags = [],
-    $tagsButtons = Array.from(document.querySelectorAll('.tags__btn'))
+    tagsSelected = { ingredients: [], appliance: [], ustensils: [] },
+    $tagsOpener = Array.from(document.querySelectorAll('.tags__opener')),
+    $tagSelectedContainer = document.querySelector('.tags__selected')
 
 let searchWord = '',
     filtered = false // if the recipes have already been filtered
@@ -64,7 +66,8 @@ const fillRecipes = recipes => {
     Array.from(document.querySelectorAll('.card')).forEach(elt => { $recipeCard.push(elt) })
     //fill my tags buttons array with all the created tags    
     // Array.from(document.querySelectorAll('.tag__btn')).forEach(elt => { $tagsBtn.push(elt) })
-    $tagsList.forEach(list =>  $tagsBtn.push(list.querySelectorAll('.tag__btn')))
+    $tagsList.forEach(list => $tagsBtn.push(list.querySelectorAll('.tag__btn')))
+    $tagsBtn.forEach(btnList => btnList.forEach(btn => btn.addEventListener('click', e => tagClicked(e))))
 }
 
 const displayCards = recipes => {
@@ -83,24 +86,20 @@ const displayTags = recipes => {
 
     //fill the arrays
     recipes.forEach(recipe => {
-        
+
         const myRecipe = recipesTags.find(tag => tag.id === recipe.id)
 
         const myArrays = [[myRecipe.ingredients, ingredientsArray], [myRecipe.ustensils, ustensilsArray], [myRecipe.appliance, applianceArray]]
         myArrays.forEach(array => fillArrays(array[0], array[1]))
     })
 
-    console.log(tagsArray)
-
     tagsArray.forEach((tag, idx) => {
-        console.log(Object.keys(tag)[0])
         const myListData = Object.values(tag)[0]
         const valueArray = []
         myListData.forEach(value => valueArray.push(value))
-    
+
         $tagsBtn[idx].forEach(tag => tag.style.display = valueArray.includes(tag.dataset.value) ? 'block' : 'none')
     })
-
 }
 
 const fillArrays = (arrayValues, arrayToFill) => {
@@ -108,7 +107,7 @@ const fillArrays = (arrayValues, arrayToFill) => {
 }
 
 $searchInput.addEventListener('input', () => {
-    searchWord = $searchInput.value.length > 2 ? $searchInput.value : filtered && (filtered = !filtered, displayCards(recipesInfos))
+    searchWord = $searchInput.value.length > 2 ? $searchInput.value : filtered && (filtered = !filtered, displayCards(recipesInfos), displayTags(recipesInfos))
     searchWord && filteringRecipes(searchWord, tempRecipesInfos)
 })
 
@@ -141,16 +140,56 @@ const filteringRecipes = (word, recipes) => {
     }
     )
 
-    console.log(tempRecipes)
-
     // fillRecipes(tempRecipes)
     displayCards(tempRecipes)
     displayTags(tempRecipes)
 }
 
-$tagsButtons.forEach(btn => btn.addEventListener('click', e => {
-    console.log('e')
-    e.target.parentElement.setAttribute('aria-expanded', 'true')
+const tagClicked = e => {
+    // tagsSelected.Object.keys(e.target.parentElement.className).push(e.target.dataset.value)
+    Object.keys(tagsSelected).forEach(tagCategory => {
+        if (tagCategory === e.target.parentElement.className) {
+            tagsSelected[tagCategory].push(e.target.dataset.value)
+            e.target.setAttribute('aria-selected', 'true')
+            createTagSelectedElement(e.target.dataset.value, tagCategory)
+        }
+    })
+
+    /*
+    1- ajouter le tag dans .tags__selected au click
+    2- créer un array avec les id des recettes incluant cet id
+    3- actualiser l'array avec cet array
+    4- gérer la suppression du tag
+    */
+
+
+}
+
+const createTagSelectedElement = (tag, category) => {
+    const newTagSelected = document.createElement('button')
+    newTagSelected.className = `tag__selected ${category}__color`
+    newTagSelected.dataset.category = category
+    newTagSelected.dataset.value = tag
+    newTagSelected.innerHTML = `${tag} <i class="fa-regular fa-circle-xmark"></i>`
+    newTagSelected.addEventListener('click', e => removeTag(e))
+    $tagSelectedContainer.appendChild(newTagSelected)
+}
+
+const removeTag = e => {
+    const{category, value} = e.target.dataset
+
+    const unselectTag = document.querySelector(`.${category} .tag__btn[data-value="${value}"]`)
+
+    unselectTag.setAttribute('aria-selected', 'false')
+
+    tagsSelected[category].splice(tagsSelected[category].indexOf(value),1)
+
+    e.target.remove()
+}
+
+$tagsOpener.forEach(btn => btn.addEventListener('click', e => {
+    const value = e.target.parentElement.ariaExpanded === 'true' ? 'false' : 'true'
+    e.target.parentElement.setAttribute('aria-expanded', value)
 }))
 
 getRecipes()
