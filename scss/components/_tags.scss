@@ -75,7 +75,7 @@
         & .tag__btn{
             cursor: pointer;
             &[aria-selected='true']{
-                pointer-events: none;
+                // pointer-events: none;
                 color: $light-grey;
                 opacity: .5;
             }
