@@ -39,4 +39,19 @@ section {
     align-items: center;
     justify-content: space-between;
     gap: 5rem 0;
+
+    .no-recipe{
+        width: 100%;
+        padding: 2rem;
+        margin: 2rem;
+        font-size: 2rem;
+        border-radius: 5px;
+        background: $dark-grey;
+        color: white;
+        display: none;
+
+        &.active{
+            display: block;
+        }
+    }
 }

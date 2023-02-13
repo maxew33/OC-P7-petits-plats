@@ -10,7 +10,7 @@ export default class TagList {
 
         this._array.forEach(elt => {
             const item = `<li class="tag__btn" data-value="${elt}" role="button">${elt}</li>`
-            $container.innerHTML+= item
+            $container.innerHTML += item
         })
 
         /* creation a list item for a maximum of 30 elements. */

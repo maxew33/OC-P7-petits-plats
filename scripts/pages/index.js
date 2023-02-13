@@ -15,6 +15,7 @@ const api = new Api('data/recipes.json'),
     $tagsList = Array.from(document.querySelectorAll('.tags__list')),
     $tagsBtn = [],
     $searchInput = document.querySelector('#search__text'),
+    $noRecipeMsg = document.querySelector('.no-recipe'),
     ingredientsArray = [],
     applianceArray = [],
     ustensilsArray = [],
@@ -26,7 +27,8 @@ const api = new Api('data/recipes.json'),
     $tagSelectedContainer = document.querySelector('.tags__selected'),
     tagsRecipesIdArray = {}
 
-let filtered = false // if the recipes have already been filtered
+let filtered = false, // if the recipes have already been filtered
+noRecipeMsgDisplayed = false
 
 
 // GET RECIPES
@@ -49,17 +51,19 @@ async function getRecipes() {
 
 const fillPage = recipes => {
 
-    $recipesContainer.innerHTML = ''
+    // $recipesContainer.innerHTML = ''
 
     // todo : essayer de sortir l'appendchild de la boucle
     // essayer de ne pas refaire des appendchild à chaque fois mais plutôt utiliser des dataset id pour display ou non les recettes
 
+    // let template = ''
     //create the card for the recipes
     recipes.map(recipe => new Recipe(recipe))
         .forEach(recipe => {
             const card = new RecipeCard(recipe)
             const myCard = card.createRecipeCard()
 
+            // template += mycard
             $recipesContainer.appendChild(myCard)
 
             const myArrays = [[recipe.ingredientsArray, ingredientsArray], [recipe.ustensilsArray, ustensilsArray], [recipe.applianceArray, applianceArray]]
@@ -85,7 +89,7 @@ const fillPage = recipes => {
     /*$tagsBtn.forEach(btnList => btnList.forEach(btn => btn.addEventListener('click', e => tagClicked(e))))*/
     $tagsList.forEach(list => {
         $tagsBtn.push(list.querySelectorAll('.tag__btn'))
-        list.addEventListener('click', e => tagClicked(e)) //DANS TAGCLICKED VERIF SI TAG DEJA DANS LISTE
+        list.addEventListener('click', e => tagClicked(e)) 
     })
 }
 
@@ -104,13 +108,16 @@ const fillArrays = (arrayValues, arrayToFill, id) => {
 
 const updatePage = () => {
 
+    noRecipeMsgDisplayed && (noRecipeMsgDisplayed = false, $noRecipeMsg.style.display='none')
+
     tempRecipes.length = 0
 
+    // fill the temp recipes array with recipes in both searchBarRecipes array and tagsRecipes array
     searchBarRecipes.forEach(recipeSearched => tagsRecipes.find(recipe => recipe === recipeSearched && tempRecipes.push(recipe)))
 
-    console.log(tempRecipes)
-
     // update the recipes cards
+    tempRecipes.length === 0 && (noRecipeMsgDisplayed = true)
+    noRecipeMsgDisplayed && ($noRecipeMsg.style.display='block')
 
     //creation of the id array
     const idArray = []

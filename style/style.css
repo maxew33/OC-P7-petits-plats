@@ -201,6 +201,9 @@ header {
   font-weight: bold;
 }
 .card__text .card__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
@@ -309,6 +312,7 @@ header {
   overflow-x: hidden;
   overflow-y: auto;
   display: block;
+  min-height: 7rem;
   animation: 0.25s displaying 0.25s linear forwards;
   /* Track */
   /* Handle */
@@ -388,6 +392,19 @@ section {
   align-items: center;
   justify-content: space-between;
   gap: 5rem 0;
+}
+.recipes .no-recipe {
+  width: 100%;
+  padding: 2rem;
+  margin: 2rem;
+  font-size: 2rem;
+  border-radius: 5px;
+  background: #C7BEBE;
+  color: white;
+  display: none;
+}
+.recipes .no-recipe.active {
+  display: block;
 }
 
 html {
