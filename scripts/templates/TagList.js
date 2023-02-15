@@ -13,13 +13,6 @@ export default class TagList {
             $container.innerHTML += item
         })
 
-        /* creation a list item for a maximum of 30 elements. */
-        // for (let i = 0; i < 30; i++) {
-        //     if (!this._array[i]) { break }
-        //     const item = `<li>${this._array[i]}</li>`
-        //     $container.innerHTML += item
-        // }
-
         return $container
     }
 }
