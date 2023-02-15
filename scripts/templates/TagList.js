@@ -9,7 +9,7 @@ export default class TagList {
         $container.classList.add(`${name}`)
 
         this._array.forEach(elt => {
-            const item = `<li class="tag__btn" data-value="${elt}" role="button">${elt}</li>`
+            const item = `<li class="tag__btn" data-value="${elt.toLowerCase()}" role="button">${elt}</li>`
             $container.innerHTML += item
         })
 
