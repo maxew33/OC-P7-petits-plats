@@ -14,13 +14,11 @@ const api = new Api('data/recipes.json'),
     $recipesContainer = document.querySelector('.recipes'),
     $tagsBtn = {},
     $searchInput = document.querySelector('#search__text'),
-    $noRecipeMsg = document.querySelector('.no-recipe'),
-    recipesTags = [], // 
-    tagsArray = { ingredients: [], appliance: [], ustensils: [] }, // tags that can be selected    
+    $noRecipeMsg = document.querySelector('.no-recipe'),   
+    itemsInfos = { ingredients: {}, appliance: {}, ustensils: {} }, // key : tag, values: recipes.id
     tagsSelected = { ingredients: [], appliance: [], ustensils: [] }, // tags selected
     $tagsOpener = Array.from(document.querySelectorAll('.tags__opener')),
-    $tagSelectedContainer = document.querySelector('.tags__selected'),
-    tagsRecipesIdArray = {} // key : tag, values: recipes.id
+    $tagSelectedContainer = document.querySelector('.tags__selected')
 
 let filtered = false, // if the recipes have already been filtered
     noRecipeMsgDisplayed = false
@@ -45,7 +43,6 @@ async function getRecipes() {
 const fillPage = recipes => {
 
     let recipesTemplate = ''
-    const tempTagsArray = {}
 
     //create the card for the recipes
     recipes.map(recipe => new Recipe(recipe))
@@ -55,54 +52,35 @@ const fillPage = recipes => {
 
             recipesTemplate += myCard
 
-
-            //PARTIE A REFACTO
-
-            Object.keys(tagsArray).forEach(category => {
-                // fill tagsRecipesIdArray
+            Object.keys(itemsInfos).forEach(category => {
                 recipe[category + 'Array'].forEach(elt => {
-                    checkAndCreateObject(tagsRecipesIdArray, elt.toLowerCase(), recipe.id)
-                    checkAndCreateObject(tempTagsArray, category, elt.toLowerCase())
+                    checkAndCreateObject(itemsInfos[category], elt.toLowerCase(), recipe.id)
                 })
 
             })
 
-            const recipeTags = { id: recipe.id, ingredients: recipe.ingredientsArray, ustensils: recipe.ustensilsArray, appliance: recipe.applianceArray }
-            recipesTags.push(recipeTags)
         })
 
     $recipesContainer.innerHTML = recipesTemplate
 
 
     //create the tags and fill the tags container
-    Object.keys(tagsArray).forEach(category => {
+    Object.keys(itemsInfos).forEach(category => {
 
-        // store unique tags
-        tagsArray[category] = [... new Set(tempTagsArray[category])]
+        // store unique tags by alphabetical order
+        const listData = [... new Set(Object.keys(itemsInfos[category]).sort())]
 
-        const myListData = new TagList(tagsArray[category])
-        const myList = myListData.createTagList(category)
+        const categoryList = new TagList(listData)
+        const itemList = categoryList.createTagList(category)
 
         const listContainer = document.querySelector(`.${category}__list`)
 
-        listContainer.appendChild(myList)
+        listContainer.appendChild(itemList)
         $tagsBtn[category] = listContainer.querySelectorAll('.tag__btn')
     })
 
     //fill my tags buttons array with all the created tags    
-    Array.from(document.querySelectorAll('.tag__btn')).forEach(btn => btn.addEventListener('click', e => tagClicked(e)))
-
-    console.log($tagsBtn)
-}
-
-
-
-// fill the arrays
-
-const fillArrays = (arrayValues, arrayToFill) => {
-    arrayValues.forEach(elt => {
-        arrayToFill.indexOf(elt.toLowerCase()) === -1 && arrayToFill.push(elt.toLowerCase())
-    })
+    Array.from(document.querySelectorAll('.tag__btn')).forEach(btn => btn.addEventListener('click', e => tagSelected(e.target)))
 }
 
 // UPDATE THE PAGE WITH THE FILTERED DATA (RECIPE / TAGS)
@@ -130,34 +108,14 @@ const updatePage = () => {
 
     // update the recipes tags
     //clear the tags array
-    console.log(tagsArray, tagsRecipesIdArray)
-    Object.values(tagsArray).forEach(value => value.length = 0)
-
-    //fill the arrays
-    /*tempRecipes.forEach(recipe => {
-
-        const myRecipe = recipesTags.find(tag => tag.id === recipe.id)
-
-        Object.keys(tagsArray).forEach(category => {
-            fillArrays(myRecipe[category], tagsArray[category])
-        }
-        )
-    })*/
+    Object.values(itemsInfos).forEach(value => value.length = 0)
 
     //display the tags button, for each category, if the recipe's id linked to the button value is in the the matching recipes id array then display it
-    Object.keys(tagsArray).forEach(category => {
+    Object.keys(itemsInfos).forEach(category => {
         $tagsBtn[category].forEach(button => {
-            button.style.display = tagsRecipesIdArray[button.dataset.value].find(elt => idArray.includes(elt)) ? 'block' : 'none'
+            button.style.display = itemsInfos[category][button.dataset.value].find(elt => idArray.includes(elt)) ? 'block' : 'none'
         })
     })
-
-    /*Object.keys(tagsRecipesIdArray).forEach(tag => {
-        idArray.forEach(id => {
-            tagsRecipesIdArray[tag].find(elt => elt === id) && console.log('yeees',tag)
-        }
-            )
-    })*/
-
 }
 
 // SEARCH A RECIPE
@@ -170,7 +128,6 @@ $searchInput.addEventListener('input', () => {
 
     $searchInput.value.length > 2 ? filteringRecipes($searchInput.value) : filtered && (filtered = !filtered, resetArray(searchBarRecipes, recipesInfos), updatePage())
 
-    // $searchInput.value.length > 2 ? filteringRecipes($searchInput.value) : filtered && (filtered = !filtered, searchBarRecipes.length = 0, searchBarRecipes.push(...recipesInfos), updatePage(recipesInfos))
 })
 
 const filteringRecipes = word => {
@@ -204,77 +161,37 @@ const filteringRecipes = word => {
 
     resetArray(searchBarRecipes, tempArray)
 
-    /*searchBarRecipes.length = 0
-    searchBarRecipes.push(...tempArray)*/
-
-    // fillPage(tempRecipes)
     updatePage()
-    // displayTags(tempRecipes)
 }
-
 
 // TAGS SEARCH
 
-const tagClicked = e => {
-    // tagsSelected.Object.keys(e.target.parentElement.className).push(e.target.dataset.value)
-
+const tagSelected = tag => {
 
     //if the tag is already selected then return
-    if (e.target.getAttribute('aria-selected') === 'true') {
+    if (tag.getAttribute('aria-selected') === 'true') {
         return
     }
+    
+    tagsSelected[tag.parentElement.className].push(tag.dataset.value)
+    tag.setAttribute('aria-selected', 'true')
+    createTagSelectedElement(tag.dataset.value, tag.parentElement.className)
 
-    //set the style of the clicked tag and add it in the tags container
-    Object.keys(tagsSelected).forEach(tagCategory => {
-        if (tagCategory === e.target.parentElement.className) {
-            tagsSelected[tagCategory].push(e.target.dataset.value)
-            e.target.setAttribute('aria-selected', 'true')
-            createTagSelectedElement(e.target.dataset.value, tagCategory)
-        }
-    })
-
-    /*tagsRecipes.length === 0 && (tagsRecipes.push(...recipesInfos))
-
-    const tempRecipesList = []
-
-    tagsRecipesIdArray[e.target.dataset.value].forEach(id => tagsRecipes.forEach(recipe => recipe.id === id && tempRecipesList.push(recipe)))
-
-
-    tagsRecipes.length = 0
-    tagsRecipes.push(...tempRecipesList)
-
-    updatePage(tagsRecipes)*/
-
-    filteringByTag(e)
-
-    /*
-    1- ajouter le tag dans .tags__selected au click
-    2- créer un array avec les id des recettes incluant cet id
-    3- actualiser l'array avec cet array
-    4- gérer la suppression du tag
-    */
-
+    filteringByTag(tag.dataset.value, tag.parentElement.className)
 
 }
 
-const filteringByTag = elt => {
-
-    const tag = elt.target.dataset.value ? elt.target.dataset.value : elt
+const filteringByTag = (tag, category) => {
 
     tagsRecipes.length === 0 && (tagsRecipes.push(...recipesInfos))
 
     const tempRecipesList = []
 
-    console.log(tagsRecipesIdArray)
-
-    tagsRecipesIdArray[tag].forEach(id => tagsRecipes.forEach(recipe => recipe.id === id && tempRecipesList.push(recipe)))
+    itemsInfos[category][tag].forEach(id => tagsRecipes.forEach(recipe => recipe.id === id && tempRecipesList.push(recipe)))
 
     resetArray(tagsRecipes, tempRecipesList)
 
     updatePage()
-
-    console.log(elt.target.parentElement.className)
-
 }
 
 const createTagSelectedElement = (tag, category) => {
@@ -288,6 +205,7 @@ const createTagSelectedElement = (tag, category) => {
 }
 
 const removeTag = e => {
+
     const { category, value } = e.target.dataset
 
     const unselectTag = document.querySelector(`.${category} .tag__btn[data-value="${value}"]`)
@@ -299,12 +217,10 @@ const removeTag = e => {
     e.target.remove()
 
     resetArray(tagsRecipes, recipesInfos)
-    /*tagsRecipes.length = 0
-    tagsRecipes.push(...recipesInfos)*/
 
     let arraysAreEmpty = true
 
-    Object.keys(tagsArray).forEach(category => {
+    Object.keys(itemsInfos).forEach(category => {
         if (tagsSelected[category].length !== 0) {
             arraysAreEmpty = false
             tagsSelected[category].forEach(tag => filteringByTag(tag))
