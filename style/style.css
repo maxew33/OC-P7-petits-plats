@@ -284,6 +284,9 @@ header {
   color: #e7e7e7;
   opacity: 0.5;
 }
+.tags__list ul .tag__btn[aria-hidden=true] {
+  display: none;
+}
 .tags__list .tags__input {
   border: none;
   background: none;

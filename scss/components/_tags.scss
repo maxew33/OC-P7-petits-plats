@@ -77,9 +77,12 @@
             cursor: pointer;
 
             &[aria-selected='true'] {
-                // pointer-events: none;
                 color: $light-grey;
                 opacity: .5;
+            }
+
+            &[aria-hidden='true'] {
+                display: none;
             }
         }
     }

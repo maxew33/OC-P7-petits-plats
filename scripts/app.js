@@ -1,11 +1,11 @@
-import Api from "../api/Api.js"
+import Api from "./api/Api.js"
 
-import updatePage from "../functions/updatePage.js"
-import { fillPage } from "../functions/fillPage.js"
+import updatePage from "./functions/updatePage.js"
+import { fillPage } from "./functions/fillPage.js"
 
-import resetArray from "../utils/resetArray.js"
+import resetArray from "./utils/resetArray.js"
 
-import TagButton from "../templates/TagButton.js"
+import TagButton from "./templates/TagButton.js"
 
 const api = new Api('data/recipes.json'),
     recipes = [],// all recipes,
@@ -13,6 +13,7 @@ const api = new Api('data/recipes.json'),
     $searchInput = document.querySelector('#search__text'),
     tagsSelected = { ingredients: [], appliance: [], ustensils: [] }, // tags selected
     $tagsOpener = Array.from(document.querySelectorAll('.tags__opener')),
+    $tagsSearchBar = Array.from(document.querySelectorAll('.tags__input')),
     $tagSelectedContainer = document.querySelector('.tags__selected')
 
 let filtered = false // if the recipes have already been filtered
@@ -23,9 +24,8 @@ async function launchApp() {
     /* Getting the recipes from the API and pushing them into the recipes array. */
     recipes.push(...await api.getRecipes())
 
-    // fill the temp recipes arrays with recipes got from api
-    resetArray(filteredRecipes['filteredByTags'], recipes)
-    resetArray(filteredRecipes['filteredBySearchBar'], recipes)
+    // fill the searchbar and tags temp recipes arrays with recipes got from api
+    Object.keys(filteredRecipes).forEach(filteredWay => resetArray(filteredRecipes[filteredWay], recipes))
 
     const { itemsInfos, $tagsBtn } = fillPage(recipes)
 
@@ -35,12 +35,10 @@ async function launchApp() {
     // with search bar
 
     $searchInput.addEventListener('input', () => {
-        /* If the length of the value of the search input is greater than 2, then it
-        calls the function `filteringRecipes` with the value of the search input as the argument.
-         If the length of the value of the search input is not greater than 2 and the recipes alreday been filtered then reset the array*/
+        /* If the length of the value of the search input is greater than 2, then triggers `filteringRecipes`.
+         If not check if the recipes have already been filtered then reset the array*/
 
         $searchInput.value.length > 2 ? filteringRecipes($searchInput.value) : filtered && (filtered = !filtered, resetArray(filteredRecipes['filteredBySearchBar'], recipes), updatePage(filteredRecipes, itemsInfos, $tagsBtn))
-
     })
 
     const filteringRecipes = word => {
@@ -131,6 +129,14 @@ async function launchApp() {
         arraysAreEmpty && updatePage(filteredRecipes, itemsInfos, $tagsBtn)
     }
 
+    $tagsSearchBar.forEach(bar => bar.addEventListener('input', e => {
+        console.log(e.target.value, e.target.dataset.category, tagsSelected, filteredRecipes['filteredByTags'])
+        $tagsBtn[e.target.dataset.category].forEach(btn => {
+            console.log(btn)
+            btn.getAttribute('aria-hidden') === 'false' && (btn.style.display = btn.textContent.match(e.target.value) ? 'block' : 'none')
+        })    
+    }))
+
 }
 
 launchApp()
@@ -139,3 +145,4 @@ $tagsOpener.forEach(btn => btn.addEventListener('click', e => {
     const value = e.target.parentElement.ariaExpanded === 'true' ? 'false' : 'true'
     e.target.parentElement.setAttribute('aria-expanded', value)
 }))
+
