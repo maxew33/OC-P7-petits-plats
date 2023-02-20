@@ -182,6 +182,10 @@ header {
 }
 .card__text .card__element {
   width: 45%;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .card__text .card__name {
   width: 65%;
@@ -199,12 +203,6 @@ header {
 }
 .card__text .card__ingredients .ingredient__name {
   font-weight: bold;
-}
-.card__text .card__description {
-  display: -webkit-box;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .ingredients__color {
@@ -229,6 +227,7 @@ header {
 .tags__search {
   display: flex;
   gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .tags__chevron {
@@ -260,51 +259,6 @@ header {
 .tags__wrapper .tags__btn {
   cursor: pointer;
 }
-
-.tags__list {
-  position: absolute;
-  display: none;
-  top: 0;
-  left: 0;
-  max-height: 0;
-  width: 51rem;
-  background: inherit;
-}
-.tags__list ul {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  line-height: 2;
-  gap: 1.25rem;
-  padding: 0 1.5rem;
-}
-.tags__list ul .tag__btn {
-  cursor: pointer;
-}
-.tags__list ul .tag__btn[aria-selected=true] {
-  color: #e7e7e7;
-  opacity: 0.5;
-}
-.tags__list ul .tag__btn[aria-hidden=true] {
-  display: none;
-}
-.tags__list .tags__input {
-  border: none;
-  background: none;
-  width: 100%;
-  line-height: 2;
-  font-size: 1.8rem;
-}
-.tags__list .tags__input::-moz-placeholder {
-  color: white;
-  opacity: 0.5;
-  padding-left: 15px;
-}
-.tags__list .tags__input::placeholder {
-  color: white;
-  opacity: 0.5;
-  padding-left: 15px;
-}
-
 .tags__wrapper[aria-expanded=true] {
   flex: 0 0 51rem;
 }
@@ -340,6 +294,52 @@ header {
     max-height: 40rem;
   }
 }
+.tags__list {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  max-height: 0;
+  width: 51rem;
+  background: inherit;
+}
+.tags__list ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  line-height: 2;
+  gap: 1.25rem;
+  padding: 0 1.5rem;
+}
+.tags__list ul .tag__btn {
+  cursor: pointer;
+}
+.tags__list ul .tag__btn[aria-selected=true] {
+  color: #e7e7e7;
+  opacity: 0.5;
+}
+.tags__list ul .tag__btn[aria-hidden=true] {
+  display: none !important;
+}
+.tags__list .tags__input {
+  border: none;
+  background: none;
+  width: 90%;
+  height: 6rem;
+  margin: 0.5rem;
+  line-height: 2;
+  font-size: 1.8rem;
+  color: white;
+  padding-left: 15px;
+}
+.tags__list .tags__input::-moz-placeholder {
+  color: white;
+  opacity: 0.5;
+}
+.tags__list .tags__input::placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
 .tag__selected {
   font-size: 1.4rem;
   border: none;

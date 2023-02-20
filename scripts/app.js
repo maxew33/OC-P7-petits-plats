@@ -10,8 +10,8 @@ import TagButton from "./templates/TagButton.js"
 const api = new Api('data/recipes.json'),
     recipes = [],// all recipes,
     filteredRecipes = { filteredBySearchBar : [], /* list of recipes filtered by words*/ filteredByTags: []}, // list of recipes filtered by tag
-    $searchInput = document.querySelector('#search__text'),
     tagsSelected = { ingredients: [], appliance: [], ustensils: [] }, // tags selected
+    $searchInput = document.querySelector('#search__text'),
     $tagsOpener = Array.from(document.querySelectorAll('.tags__opener')),
     $tagsSearchBar = Array.from(document.querySelectorAll('.tags__input')),
     $tagSelectedContainer = document.querySelector('.tags__selected')
@@ -130,9 +130,7 @@ async function launchApp() {
     }
 
     $tagsSearchBar.forEach(bar => bar.addEventListener('input', e => {
-        console.log(e.target.value, e.target.dataset.category, tagsSelected, filteredRecipes['filteredByTags'])
         $tagsBtn[e.target.dataset.category].forEach(btn => {
-            console.log(btn)
             btn.getAttribute('aria-hidden') === 'false' && (btn.style.display = btn.textContent.match(e.target.value) ? 'block' : 'none')
         })    
     }))
@@ -145,4 +143,3 @@ $tagsOpener.forEach(btn => btn.addEventListener('click', e => {
     const value = e.target.parentElement.ariaExpanded === 'true' ? 'false' : 'true'
     e.target.parentElement.setAttribute('aria-expanded', value)
 }))
-

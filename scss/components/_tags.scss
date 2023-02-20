@@ -20,6 +20,7 @@
 .tags__search {
     display: flex;
     gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .tags__chevron {
@@ -55,7 +56,50 @@
     & .tags__btn {
         cursor: pointer;
     }
+
+    &[aria-expanded="true"] {
+        flex: 0 0 51rem;
+
+        .tags__chevron {
+            transform: rotate(180deg);
+        }
+
+        .tags__list {
+            overflow-x: hidden;
+            overflow-y: auto;
+            display: block;
+            min-height: 7rem;
+            animation: .25s displaying .25s linear forwards;
+
+            &::-webkit-scrollbar {
+                width: 10px;
+            }
+
+            /* Track */
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: $light-grey;
+                border-radius: 5px;
+            }
+
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: $dark-grey;
+            }
+        }
+    }
 }
+
+@keyframes displaying {
+    to {
+        max-height: 40rem;
+    }
+}
+
 
 .tags__list {
     position: absolute;
@@ -82,7 +126,7 @@
             }
 
             &[aria-hidden='true'] {
-                display: none;
+                display: none !important;
             }
         }
     }
@@ -90,59 +134,21 @@
     .tags__input {
         border: none;
         background: none;
-        width: 100%;
+        width: 90%;
+        height: 6rem;
+        margin: .5rem;
         line-height: 2;
         font-size: 1.8rem;
+        color: white;
+        padding-left: 15px;
 
         &::placeholder {
             color: white;
             opacity: .5;
-            padding-left: 15px;
         }
     }
 }
 
-.tags__wrapper[aria-expanded="true"] {
-    flex: 0 0 51rem;
-
-    .tags__chevron {
-        transform: rotate(180deg);
-    }
-
-    .tags__list {
-        overflow-x: hidden;
-        overflow-y: auto;
-        display: block;
-        min-height: 7rem;
-        animation: .25s displaying .25s linear forwards;
-
-        &::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        /* Track */
-        &::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        /* Handle */
-        &::-webkit-scrollbar-thumb {
-            background: $light-grey;
-            border-radius: 5px;
-        }
-
-        /* Handle on hover */
-        &::-webkit-scrollbar-thumb:hover {
-            background: $dark-grey;
-        }
-    }
-}
-
-@keyframes displaying {
-    to {
-        max-height: 40rem;
-    }
-}
 
 .tag__selected {
     font-size: 1.4rem;

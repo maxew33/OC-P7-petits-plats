@@ -28,6 +28,10 @@
 
     .card__element {
         width: 45%;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .card__name {
@@ -51,13 +55,6 @@
         .ingredient__name {
             font-weight: bold;
         }
-    }
-
-    .card__description {
-        display: -webkit-box;
-        -webkit-line-clamp: 6;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
     }
 
 }
