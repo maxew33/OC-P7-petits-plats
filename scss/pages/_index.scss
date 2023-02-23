@@ -1,6 +1,7 @@
 section {
     max-width: 1400px;
     margin: auto;
+    padding: 0 1rem;
     font-size: 1.8rem;
 }
 
@@ -33,6 +34,7 @@ section {
         transform: translateY(-50%);
     }
 }
+
 .recipes {
     display: flex;
     flex-wrap: wrap;

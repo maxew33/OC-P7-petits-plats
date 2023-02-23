@@ -163,3 +163,42 @@
         pointer-events: none;
     }
 }
+
+@media screen and (max-width: 1080px) {
+    .tags__search {
+        position: relative;
+        display: block;
+    }
+
+    .tags__wrapper {
+        position: absolute;
+        max-height: 25rem;
+        width: 32%;
+        transition: width .25s ease-in-out;
+
+        @for $i from 1 through 3 {
+            &:nth-child(#{$i}) {
+                left: 34% * ($i - 1);
+            }
+        }
+
+
+        &[aria-expanded="true"] {
+            width: 100%;
+            left: 0;
+            z-index: 10;
+        }
+    }
+
+    @keyframes displaying {
+        to {
+            max-height: 40rem;
+        }
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .tags__chevron {
+        display: none;
+    }
+}

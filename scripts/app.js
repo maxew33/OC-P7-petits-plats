@@ -9,7 +9,7 @@ import TagButton from "./templates/TagButton.js"
 
 const api = new Api('data/recipes.json'),
     recipes = [],// all recipes,
-    filteredRecipes = { filteredBySearchBar : [], /* list of recipes filtered by words*/ filteredByTags: []}, // list of recipes filtered by tag
+    filteredRecipes = { filteredBySearchBar: [], /* list of recipes filtered by words*/ filteredByTags: [] }, // list of recipes filtered by tag
     tagsSelected = { ingredients: [], appliance: [], ustensils: [] }, // tags selected
     $searchInput = document.querySelector('#search__text'),
     $tagsOpener = Array.from(document.querySelectorAll('.tags__opener')),
@@ -58,8 +58,8 @@ async function launchApp() {
 
             ingredients.forEach(elt => myIngredients += elt.ingredient.toLowerCase() + ' ')
 
-            myName.match(searchedWord) ? tempArray.push(recipe) : myIngredients.match(searchedWord) ?  tempArray.push(recipe) : myDescription.match(searchedWord) && tempArray.push(recipe)
-            
+            myName.match(searchedWord) ? tempArray.push(recipe) : myIngredients.match(searchedWord) ? tempArray.push(recipe) : myDescription.match(searchedWord) && tempArray.push(recipe)
+
         }
         )
 
@@ -132,7 +132,7 @@ async function launchApp() {
     $tagsSearchBar.forEach(bar => bar.addEventListener('input', e => {
         $tagsBtn[e.target.dataset.category].forEach(btn => {
             btn.getAttribute('aria-hidden') === 'false' && (btn.style.display = btn.textContent.match(e.target.value) ? 'block' : 'none')
-        })    
+        })
     }))
 
 }
@@ -141,5 +141,6 @@ launchApp()
 
 $tagsOpener.forEach(btn => btn.addEventListener('click', e => {
     const value = e.target.parentElement.ariaExpanded === 'true' ? 'false' : 'true'
+    $tagsOpener.forEach(list => list.parentElement.setAttribute('aria-expanded', 'false'))
     e.target.parentElement.setAttribute('aria-expanded', value)
 }))

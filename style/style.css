@@ -205,6 +205,17 @@ header {
   font-weight: bold;
 }
 
+@media screen and (max-width: 1080px) {
+  .card {
+    width: 45vw;
+    aspect-ratio: 0.9;
+  }
+}
+@media screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}
 .ingredients__color {
   background: #3282F7;
 }
@@ -353,9 +364,46 @@ header {
   pointer-events: none;
 }
 
+@media screen and (max-width: 1080px) {
+  .tags__search {
+    position: relative;
+    display: block;
+  }
+  .tags__wrapper {
+    position: absolute;
+    max-height: 25rem;
+    width: 32%;
+    transition: width 0.25s ease-in-out;
+  }
+  .tags__wrapper:nth-child(1) {
+    left: 0%;
+  }
+  .tags__wrapper:nth-child(2) {
+    left: 34%;
+  }
+  .tags__wrapper:nth-child(3) {
+    left: 68%;
+  }
+  .tags__wrapper[aria-expanded=true] {
+    width: 100%;
+    left: 0;
+    z-index: 10;
+  }
+  @keyframes displaying {
+    to {
+      max-height: 40rem;
+    }
+  }
+}
+@media screen and (max-width: 468px) {
+  .tags__chevron {
+    display: none;
+  }
+}
 section {
   max-width: 1400px;
   margin: auto;
+  padding: 0 1rem;
   font-size: 1.8rem;
 }
 

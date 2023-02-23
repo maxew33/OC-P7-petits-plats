@@ -58,3 +58,16 @@
     }
 
 }
+
+@media screen and (max-width: 1080px) {
+    .card {
+        width: 45vw;
+        aspect-ratio: .9;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}
