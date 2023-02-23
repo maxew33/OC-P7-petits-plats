@@ -27,7 +27,10 @@ async function launchApp() {
     // fill the searchbar and tags temp recipes arrays with recipes got from api
     Object.keys(filteredRecipes).forEach(filteredWay => resetArray(filteredRecipes[filteredWay], recipes))
 
-    const { itemsInfos, $tagsBtn } = fillPage(recipes)
+    const { recipesWords, itemsInfos, $tagsBtn } = fillPage(recipes)
+
+    const recipesWordsSorted = [...Object.keys(recipesWords).sort()]
+    console.log(recipesWordsSorted)
 
     Array.from(document.querySelectorAll('.tag__btn')).forEach(btn => btn.addEventListener('click', e => tagSelected(e.target)))
 
@@ -46,10 +49,47 @@ async function launchApp() {
         !filtered && (filtered = true)
 
         const searchedWord = word.toLowerCase()
+        const wordLength = searchedWord.length
+
+        console.log(typeof(recipesWordsSorted))
+
+        recipesWordsSorted.forEach(word => console.log(word.slice(0, wordLength)))
+
+        let start = 0,
+        end = recipesWordsSorted.length,
+        wordPlace = -1,
+        i = 0
+
+        while(start < end){
+            i++
+            const mid = Math.floor(start + (end-start)/2)
+            const recipeWord = recipesWordsSorted[mid].slice(0, wordLength)  
+            console.log(searchedWord, recipeWord)          
+            if(recipeWord === searchedWord){
+                start = end
+                wordPlace = mid
+                console.log('found', i)
+            }
+            else if(recipeWord > searchedWord){
+                console.log('trop')
+                end = mid - 1 
+            }
+            else{
+                console.log('pas assez')
+                start = mid + 1
+            }
+            
+        console.log(start, end)
+        }
+
+
+        console.log(wordPlace, recipesWordsSorted[wordPlace])
 
         const tempArray = []
 
-        recipes.forEach(recipe => {
+        recipesWords[recipesWordsSorted[wordPlace]].forEach(id => filteredRecipes['filteredByTags'].forEach(recipe => recipe.id === id && tempArray.push(recipe)))
+
+        /*recipes.forEach(recipe => {
             const { name, ingredients, description } = recipe
 
             let myIngredients = '',
@@ -61,7 +101,9 @@ async function launchApp() {
             myName.match(searchedWord) ? tempArray.push(recipe) : myIngredients.match(searchedWord) ? tempArray.push(recipe) : myDescription.match(searchedWord) && tempArray.push(recipe)
 
         }
-        )
+        )*/
+
+
 
         resetArray(filteredRecipes['filteredBySearchBar'], tempArray)
 

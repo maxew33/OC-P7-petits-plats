@@ -5,10 +5,10 @@ import TagList from "../templates/TagList.js"
 
 import checkAndCreateObject from "../utils/checkAndCreateObject.js"
 
-export function fillPage (recipes) {
+export function fillPage(recipes) {
 
-const itemsInfos = { ingredients: {}, appliance: {}, ustensils: {} },
-$tagsBtn = {}
+    const itemsInfos = { ingredients: {}, appliance: {}, ustensils: {} },
+        $tagsBtn = {}
 
     let recipesTemplate = ''
 
@@ -29,7 +29,7 @@ $tagsBtn = {}
 
         })
 
-        document.querySelector('.recipes').innerHTML += recipesTemplate
+    document.querySelector('.recipes').innerHTML += recipesTemplate
 
 
     //create the tags and fill the tags container
@@ -46,6 +46,22 @@ $tagsBtn = {}
         listContainer.appendChild(itemList)
         $tagsBtn[category] = listContainer.querySelectorAll('.tag__btn')
     })
-    
-    return {itemsInfos, $tagsBtn}
+
+
+    const recipesWords = []
+
+    const getWords = (elt, id) => {
+        elt.split(' ').forEach(word => {
+            const wordToCheck = word.replace(/[^A-Za-zéèâàêç]/g, '').toLowerCase()
+            wordToCheck.length > 2 && checkAndCreateObject(recipesWords, wordToCheck, id)
+        })
+    }
+
+    recipes.forEach(recipe => {
+        getWords(recipe['name'], recipe.id)
+        getWords(recipe['description'], recipe.id)
+        recipe['ingredients'].forEach(ingredient => getWords(ingredient['ingredient'], recipe.id))
+    })
+
+    return { recipesWords, itemsInfos, $tagsBtn }
 }
