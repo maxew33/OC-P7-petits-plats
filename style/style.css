@@ -395,11 +395,6 @@ header {
     }
   }
 }
-@media screen and (max-width: 468px) {
-  .tags__chevron {
-    display: none;
-  }
-}
 section {
   max-width: 1400px;
   margin: auto;
