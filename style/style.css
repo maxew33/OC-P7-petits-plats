@@ -449,7 +449,7 @@ section {
   color: white;
   display: none;
 }
-.recipes .no-recipe.active {
+.recipes .no-recipe[aria-hidden=false] {
   display: block;
 }
 

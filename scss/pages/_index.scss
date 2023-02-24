@@ -52,7 +52,7 @@ section {
         color: white;
         display: none;
 
-        &.active{
+        &[aria-hidden="false"]{
             display: block;
         }
     }

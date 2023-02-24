@@ -2,16 +2,15 @@ export default function updatePage(filteredRecipes, itemsInfos, $tagsBtn) {
 
     const $noRecipeMsg = document.querySelector('.no-recipe')
 
-    $noRecipeMsg.getAttribute('aria-selected') === 'true' && ($noRecipeMsg.setAttribute('aria-selected', 'false'), $noRecipeMsg.style.display = 'none')
+    $noRecipeMsg.getAttribute('aria-hidden') === 'false' && $noRecipeMsg.setAttribute('aria-hidden', 'true')
 
     const tempRecipes = []
 
     // fill the temp recipes array with recipes in both searchBarRecipes array and tagsRecipes array
-    filteredRecipes['filteredBySearchBar'].forEach(recipeSearched => filteredRecipes['filteredByTags'].find(recipe => recipe === recipeSearched && tempRecipes.push(recipe)))
+    filteredRecipes['filteredBySearchBar'].forEach(recipeSearched => filteredRecipes['filteredByTags'].includes(recipeSearched) && tempRecipes.push(recipeSearched))
 
     // if no recipe has matched
-    tempRecipes.length === 0 && ($noRecipeMsg.setAttribute('aria-selected', 'true'))
-    $noRecipeMsg.getAttribute('aria-selected') === 'true' && ($noRecipeMsg.style.display = 'block')
+    tempRecipes.length === 0 && ($noRecipeMsg.setAttribute('aria-hidden', 'false'))
 
     //creation of the id array to store the matching recipes id
     const idArray = []
