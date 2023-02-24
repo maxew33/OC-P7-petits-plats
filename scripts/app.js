@@ -16,7 +16,7 @@ const api = new Api('data/recipes.json'),
     $tagsSearchBar = Array.from(document.querySelectorAll('.tags__input')),
     $tagSelectedContainer = document.querySelector('.tags__selected')
 
-let filtered = false // if the recipes have already been filtered
+let searchWordLength = 0 // length of the word in the search input
 
 async function launchApp() {
 
@@ -41,53 +41,73 @@ async function launchApp() {
         /* If the length of the value of the search input is greater than 2, then triggers `filteringRecipes`.
          If not check if the recipes have already been filtered then reset the array*/
 
-        $searchInput.value.length > 2 ? filteringRecipes($searchInput.value) : filtered && (filtered = !filtered, resetArray(filteredRecipes['filteredBySearchBar'], recipes), updatePage(filteredRecipes, itemsInfos, $tagsBtn))
+        $searchInput.value.length > 2 ? filteringRecipes($searchInput.value) : searchWordLength > 0 && (searchWordLength = 0, resetArray(filteredRecipes['filteredBySearchBar'], recipes), updatePage(filteredRecipes, itemsInfos, $tagsBtn))
     })
 
     const filteringRecipes = word => {
 
-        !filtered && (filtered = true)
-
         const searchedWord = word.toLowerCase()
         const wordLength = searchedWord.length
 
-        console.log(typeof(recipesWordsSorted))
+        searchWordLength > wordLength && resetArray(filteredRecipes['filteredBySearchBar'], recipes)
+
+        searchWordLength = wordLength
 
         recipesWordsSorted.forEach(word => console.log(word.slice(0, wordLength)))
 
-        let start = 0,
-        end = recipesWordsSorted.length,
-        wordPlace = -1,
-        i = 0
-
-        while(start < end){
-            i++
-            const mid = Math.floor(start + (end-start)/2)
-            const recipeWord = recipesWordsSorted[mid].slice(0, wordLength)  
-            console.log(searchedWord, recipeWord)          
-            if(recipeWord === searchedWord){
-                start = end
-                wordPlace = mid
-                console.log('found', i)
-            }
-            else if(recipeWord > searchedWord){
-                console.log('trop')
-                end = mid - 1 
-            }
-            else{
-                console.log('pas assez')
-                start = mid + 1
-            }
-            
-        console.log(start, end)
-        }
-
-
-        console.log(wordPlace, recipesWordsSorted[wordPlace])
-
         const tempArray = []
 
-        recipesWords[recipesWordsSorted[wordPlace]].forEach(id => filteredRecipes['filteredByTags'].forEach(recipe => recipe.id === id && tempArray.push(recipe)))
+        let start = 0,
+            end = recipesWordsSorted.length,
+            recipeWord,
+            found = false,
+            wordPlace = -1
+
+        while (start < end && found === false) {
+            const mid = Math.floor(start + (end - start) / 2)
+
+            recipeWord = recipesWordsSorted[mid].slice(0, wordLength)
+
+            if (recipeWord === searchedWord) {
+                found = true
+                wordPlace = mid
+
+                tempArray.push(...recipesWords[recipesWordsSorted[wordPlace]])
+
+                start = mid - 1
+
+                while (recipesWordsSorted[start].slice(0, wordLength) === searchedWord) {
+                    tempArray.push(...recipesWords[recipesWordsSorted[start]])
+                    start--
+                }
+
+                console.log(start, recipesWordsSorted[start + 1], recipesWordsSorted[start])
+
+                end = mid + 1
+                while (recipesWordsSorted[end].slice(0, wordLength) === searchedWord) {
+                    tempArray.push(...recipesWords[recipesWordsSorted[end]])
+                    end++
+                }
+            }
+            else if (recipeWord > searchedWord) {
+                console.log('trop', recipesWordsSorted[start])
+                end = mid - .5
+            }
+            else {
+                console.log('pas assez', recipesWordsSorted[end])
+                start = mid + .5
+            }
+        }
+
+        // search the start bound
+
+        const idList = [... new Set((tempArray).sort())]
+
+        tempArray.length = 0
+
+        console.log(idList)
+
+        idList.forEach(id => filteredRecipes['filteredBySearchBar'].forEach(recipe => recipe.id === id && tempArray.push(recipe)))
 
         /*recipes.forEach(recipe => {
             const { name, ingredients, description } = recipe
@@ -103,7 +123,7 @@ async function launchApp() {
         }
         )*/
 
-
+        console.log(tempArray)
 
         resetArray(filteredRecipes['filteredBySearchBar'], tempArray)
 

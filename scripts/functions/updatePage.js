@@ -6,6 +6,8 @@ export default function updatePage(filteredRecipes, itemsInfos, $tagsBtn) {
 
     const tempRecipes = []
 
+    console.log(filteredRecipes)
+
     // fill the temp recipes array with recipes in both searchBarRecipes array and tagsRecipes array
     filteredRecipes['filteredBySearchBar'].forEach(recipeSearched => filteredRecipes['filteredByTags'].find(recipe => recipe === recipeSearched && tempRecipes.push(recipe)))
 

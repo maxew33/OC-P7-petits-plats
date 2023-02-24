@@ -47,20 +47,24 @@ export function fillPage(recipes) {
         $tagsBtn[category] = listContainer.querySelectorAll('.tag__btn')
     })
 
-
+/**
+ * It takes an array of recipes, and for each recipe, it takes the name, description, and ingredients,
+ * and for each of those, it splits the string into an array of words, and then it checks if the word
+ * is longer than 2 characters, and if it is, it adds it to the recipesWords object.
+ */
     const recipesWords = []
 
     const getWords = (elt, id) => {
-        elt.split(' ').forEach(word => {
-            const wordToCheck = word.replace(/[^A-Za-zéèâàêç]/g, '').toLowerCase()
+        elt.forEach(word => {
+            const wordToCheck = word.replace(/[^A-Za-zéèâàêç ]/g, '').toLowerCase()
             wordToCheck.length > 2 && checkAndCreateObject(recipesWords, wordToCheck, id)
         })
     }
 
     recipes.forEach(recipe => {
-        getWords(recipe['name'], recipe.id)
-        getWords(recipe['description'], recipe.id)
-        recipe['ingredients'].forEach(ingredient => getWords(ingredient['ingredient'], recipe.id))
+        getWords([recipe['name']], recipe.id)
+        getWords(recipe['description'].split(/[\s']/), recipe.id)
+        recipe['ingredients'].forEach(ingredient => getWords(ingredient['ingredient'].split(/[\s']/), recipe.id))
     })
 
     return { recipesWords, itemsInfos, $tagsBtn }
