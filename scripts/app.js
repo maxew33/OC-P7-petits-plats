@@ -16,7 +16,7 @@ const api = new Api('data/recipes.json'),
     $tagsSearchBar = Array.from(document.querySelectorAll('.tags__input')),
     $tagSelectedContainer = document.querySelector('.tags__selected')
 
-let filtered = false // if the recipes have already been filtered
+let searchWordLength = 0 // length of the word in the search input
 
 async function launchApp() {
 
@@ -37,19 +37,29 @@ async function launchApp() {
     $searchInput.addEventListener('input', () => {
         /* If the length of the value of the search input is greater than 2, then triggers `filteringRecipes`.
          If not check if the recipes have already been filtered then reset the array*/
-
-        $searchInput.value.length > 2 ? filteringRecipes($searchInput.value) : filtered && (filtered = !filtered, resetArray(filteredRecipes['filteredBySearchBar'], recipes), updatePage(filteredRecipes, itemsInfos, $tagsBtn))
+        if ($searchInput.value.length > 2) {
+            filteringRecipes($searchInput.value)
+        }
+        else if (searchWordLength > 0) {
+            searchWordLength = 0
+            resetArray(filteredRecipes['filteredBySearchBar'], recipes)
+            updatePage(filteredRecipes, itemsInfos, $tagsBtn)
+        }
     })
 
     const filteringRecipes = word => {
 
-        !filtered && (filtered = true)
-
         const searchedWord = word.toLowerCase()
+
+        const wordLength = searchedWord.length
+
+        /* Checking if the length of the word in the search input is greater than the length of the last searched word. If it is (letters have been erased), it resets the array. */
+        searchWordLength > wordLength && resetArray(filteredRecipes['filteredBySearchBar'], recipes)
+        searchWordLength = wordLength
 
         const tempArray = []
 
-        recipes.forEach(recipe => {
+        filteredRecipes['filteredBySearchBar'].forEach(recipe => {
             const { name, ingredients, description } = recipe
 
             let myIngredients = '',
