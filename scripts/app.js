@@ -33,9 +33,9 @@ async function launchApp() {
 
     const { recipesWords, itemsInfos, $tagsBtn } = fillPage(recipes)
 
-    // get all the recipes words sorted in a single array
-    const recipesWordsSorted = [...Object.keys(recipesWords).sort()]
-
+    // get all the recipes words sorted in a single array with a locale compare to ignore the diacritics
+    const recipesWordsSorted = [...Object.keys(recipesWords).sort((a, b) => a.localeCompare(b, 'fr', { sensitivity: 'base' }))]
+    
     Array.from(document.querySelectorAll('.tag__btn')).forEach(btn => btn.addEventListener('click', e => tagSelected(e.target)))
 
     // SEARCH A RECIPE
@@ -68,42 +68,40 @@ async function launchApp() {
         let start = 0,
             end = recipesWordsSorted.length,
             recipeWord,
-            found = false,
-            wordPlace = -1
+            found = false
 
         while (start < end && found === false) {
             const mid = Math.floor(start + (end - start) / 2)
 
             recipeWord = recipesWordsSorted[mid].slice(0, wordLength)
 
-            if (recipeWord === searchedWord) {
-                found = true
-                wordPlace = mid
+            let wordComparison = recipeWord.localeCompare(searchedWord, 'fr', { sensitivity: 'base' })
 
-                tempArray.push(...recipesWords[recipesWordsSorted[wordPlace]])
+            if (wordComparison === 0) {
+                found = true
+
+                tempArray.push(...recipesWords[recipesWordsSorted[mid]])
 
                 // looking for the set of all the matching words
                 start = mid - 1
-                while (recipesWordsSorted[start].slice(0, wordLength) === searchedWord) {
+                while (recipesWordsSorted[start].slice(0, wordLength).localeCompare(searchedWord, 'fr', { sensitivity: 'base' }) === 0) {
                     tempArray.push(...recipesWords[recipesWordsSorted[start]])
                     start--
                 }
 
                 end = mid + 1
-                while (recipesWordsSorted[end].slice(0, wordLength) === searchedWord) {
+                while (recipesWordsSorted[end].slice(0, wordLength).localeCompare(searchedWord, 'fr', { sensitivity: 'base' }) === 0) {
                     tempArray.push(...recipesWords[recipesWordsSorted[end]])
                     end++
                 }
             }
-            else if (recipeWord > searchedWord) {
-                end = mid - .5
-            }
+
             else {
-                start = mid + .5
+                wordComparison < 0 ? start = mid + .5 : end = mid - .5
             }
         }
 
-        const idList = [... new Set((tempArray))]
+        const idList = [... new Set(tempArray)]
 
         resetArray(filteredRecipes['filteredBySearchBar'], idList)
 

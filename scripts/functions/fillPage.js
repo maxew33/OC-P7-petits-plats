@@ -56,15 +56,16 @@ export function fillPage(recipes) {
 
     const getWords = (elt, id) => {
         elt.forEach(word => {
-            const wordToCheck = word.replace(/[^A-Za-zéèâàêç ]/g, '').toLowerCase()
+            const wordToCheck = word.replace(/[^A-Za-zéèâàêïîç ]/g, '').toLowerCase()
             wordToCheck.length > 2 && checkAndCreateObject(recipesWords, wordToCheck, id)
         })
     }
 
     recipes.forEach(recipe => {
-        getWords([recipe['name']], recipe.id)
-        getWords(recipe['description'].split(/[\s']/), recipe.id)
-        recipe['ingredients'].forEach(ingredient => getWords(ingredient['ingredient'].split(/[\s']/), recipe.id))
+        const recipeInfos = [[recipe['name']], recipe['name'].split(/[\s']/), recipe['description'].split(/[\s']/)]
+        recipe['ingredients'].forEach(ingredient => recipeInfos.push([ingredient['ingredient']], ingredient['ingredient'].split(/[\s']/)))
+                
+        recipeInfos.forEach(info => getWords(info, recipe.id))
     })
 
     return { recipesWords, itemsInfos, $tagsBtn }
