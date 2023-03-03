@@ -1896,6 +1896,491 @@
                 "rouleau à patisserie",
                 "fouet"
             ]
+        },
+        {
+            "id": 51,
+            "name": "Pizza Margherita",
+            "servings": 4,
+            "ingredients": [
+                {
+                    "ingredient": "Pâte à pizza",
+                    "quantity": 1,
+                    "unit": "pièce"
+                },
+                {
+                    "ingredient": "Sauce tomate",
+                    "quantity": 200,
+                    "unit": "ml"
+                },
+                {
+                    "ingredient": "Mozzarella",
+                    "quantity": 125,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Basilic",
+                    "quantity": 10,
+                    "unit": "feuilles"
+                }
+            ],
+            "time": 30,
+            "description": "Préchauffer le four à 220°C. Etaler la pâte à pizza sur une plaque de cuisson. Etaler la sauce tomate sur la pâte. Ajouter la mozzarella en tranches sur la sauce tomate. Enfourner pendant 15 à 20 minutes jusqu'à ce que la croûte soit dorée. Garnir de feuilles de basilic avant de servir.",
+            "appliance": "Four",
+            "ustensils": [
+                "Plaque de cuisson",
+                "Couteau",
+                "Planche à découper"
+            ]
+        },
+        {
+            "id": 52,
+            "name": "Salade Caesar",
+            "servings": 2,
+            "ingredients": [
+                {
+                    "ingredient": "Laitue romaine",
+                    "quantity": 1,
+                    "unit": "pièce"
+                },
+                {
+                    "ingredient": "Poulet grillé",
+                    "quantity": 2,
+                    "unit": "filets"
+                },
+                {
+                    "ingredient": "Croûtons",
+                    "quantity": 50,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Parmesan",
+                    "quantity": 50,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Sauce Caesar",
+                    "quantity": 50,
+                    "unit": "ml"
+                }
+            ],
+            "time": 20,
+            "description": "Couper la laitue romaine en morceaux et disposer dans un saladier. Ajouter les croûtons et le poulet grillé tranché. Verser la sauce Caesar sur le dessus et saupoudrer de parmesan. Bien mélanger avant de servir.",
+            "appliance": "Saladier",
+            "ustensils": [
+                "Couteau",
+                "Fourchette",
+                "Poêle"
+            ]
+        },
+        {
+            "id": 53,
+            "name": "Omelette aux champignons",
+            "servings": 2,
+            "ingredients": [
+                {
+                    "ingredient": "Oeufs",
+                    "quantity": 4
+                },
+                {
+                    "ingredient": "Champignons de Paris",
+                    "quantity": 200,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Crème fraîche",
+                    "quantity": 20,
+                    "unit": "cl"
+                },
+                {
+                    "ingredient": "Beurre",
+                    "quantity": 30,
+                    "unit": "grammes"
+                }
+            ],
+            "time": 15,
+            "description": "Nettoyer les champignons et les couper en lamelles. Faire fondre le beurre dans une poêle. Ajouter les champignons et les faire revenir jusqu'à ce qu'ils soient dorés. Dans un bol, fouetter les oeufs avec la crème fraîche. Verser le mélange sur les champignons et cuire à feu moyen jusqu'à ce que l'omelette soit prise. Retourner et cuire l'autre côté pendant une minute. Servir chaud.",
+            "appliance": "Poêle",
+            "ustensils": [
+                "Bol",
+                "Fouet"
+            ]
+        },
+        {
+            "id": 54,
+            "name": "Ratatouille",
+            "servings": 4,
+            "ingredients": [
+                {
+                    "ingredient": "Courgette",
+                    "quantity": 1
+                },
+                {
+                    "ingredient": "Aubergine",
+                    "quantity": 1
+                },
+                {
+                    "ingredient": "Poivron rouge",
+                    "quantity": 1
+                },
+                {
+                    "ingredient": "Oignon",
+                    "quantity": 1
+                },
+                {
+                    "ingredient": "Tomates",
+                    "quantity": 4
+                },
+                {
+                    "ingredient": "Huile d'olive",
+                    "quantity": 20,
+                    "unit": "cl"
+                },
+                {
+                    "ingredient": "Ail",
+                    "quantity": 2,
+                    "unit": "gousses"
+                },
+                {
+                    "ingredient": "Thym",
+                    "quantity": 1,
+                    "unit": "brin"
+                },
+                {
+                    "ingredient": "Sel",
+                    "quantity": 1,
+                    "unit": "pincée"
+                },
+                {
+                    "ingredient": "Poivre",
+                    "quantity": 1,
+                    "unit": "pincée"
+                }
+            ],
+            "time": 60,
+            "description": "Préchauffer le four à 180°C. Couper tous les légumes en rondelles ou en dés. Dans une poêle, faire revenir l'oignon et l'ail dans l'huile d'olive jusqu'à ce qu'ils soient dorés. Dans un plat allant au four, disposer les légumes en couches en alternant les couleurs. Ajouter le thym, le sel et le poivre. Enfourner pendant 45 minutes à 1 heure, jusqu'à ce que les légumes soient tendres.",
+            "appliance": "Four",
+            "ustensils": [
+                "Couteau",
+                "Planche à découper",
+                "Poêle",
+                "Plat à gratin"
+            ]
+        },
+        {
+            "id": 55,
+            "name": "Poulet rôti",
+            "servings": 4,
+            "ingredients": [
+                {
+                    "ingredient": "Poulet",
+                    "quantity": 1.2,
+                    "unit": "kg"
+                },
+                {
+                    "ingredient": "Beurre",
+                    "quantity": 75,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Thym",
+                    "quantity": 1,
+                    "unit": "brin"
+                },
+                {
+                    "ingredient": "Laurier",
+                    "quantity": 2,
+                    "unit": "feuilles"
+                },
+                {
+                    "ingredient": "Sel",
+                    "quantity": 1,
+                    "unit": "pincée"
+                },
+                {
+                    "ingredient": "Poivre",
+                    "quantity": 1,
+                    "unit": "pincée"
+                }
+            ],
+            "time": 120,
+            "description": "Préchauffer le four à 220°C. Laver le poulet et le sécher avec du papier absorbant. Dans un bol, mélanger le beurre, le thym, le laurier, le sel et le poivre. Insérer le mélange sous la peau du poulet en commençant par les cuisses et les poitrines. Enfourner pendant 1h30. Arroser régulièrement le poulet avec le jus de cuisson. Laisser reposer le poulet pendant 10 minutes avant de le découper.",
+            "appliance": "Four",
+            "ustensils": [
+                "Couteau",
+                "Plat à four",
+                "Spatule"
+            ]
+        },
+        {
+            "id": 56,
+            "name": "Salade de pâtes au jambon",
+            "servings": 4,
+            "ingredients": [
+                {
+                    "ingredient": "Pâtes fusilli",
+                    "quantity": 400,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Tomates cerises",
+                    "quantity": 250,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Mozzarella",
+                    "quantity": 250,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Jambon de Parme",
+                    "quantity": 4,
+                    "unit": "tranches"
+                },
+                {
+                    "ingredient": "Olives",
+                    "quantity": 100,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Basilic",
+                    "quantity": 1,
+                    "unit": "bouquet"
+                },
+                {
+                    "ingredient": "Huile d'olive",
+                    "quantity": 5,
+                    "unit": "cl"
+                },
+                {
+                    "ingredient": "Vinaigre balsamique",
+                    "quantity": 1,
+                    "unit": "cuillère à soupe"
+                },
+                {
+                    "ingredient": "Sel",
+                    "quantity": 1,
+                    "unit": "pincée"
+                },
+                {
+                    "ingredient": "Poivre",
+                    "quantity": 1,
+                    "unit": "pincée"
+                }
+            ],
+            "time": 30,
+            "description": "Faire cuire les pâtes dans de l'eau bouillante salée selon les indications du paquet. Égoutter et rincer sous l'eau froide. Dans un grand saladier, mélanger les pâtes, les tomates cerises coupées en deux, la mozzarella coupée en dés, les tranches de jambon de Parme coupées en morceaux et les olives. Dans un bol, mélanger l'huile d'olive, le vinaigre balsamique, le sel et le poivre. Verser la vinaigrette sur la salade et mélanger délicatement. Ajouter les feuilles de basilic hachées et servir immédiatement.",
+            "appliance": "Casserole",
+            "ustensils": [
+                "Saladier",
+                "Cuillère en bois"
+            ]
+        },
+        {
+            "id": 57,
+            "name": "Bœuf Bourguignon",
+            "servings": 4,
+            "ingredients": [
+                {
+                    "ingredient": "Paleron de bœuf",
+                    "quantity": 1,
+                    "unit": "kg"
+                },
+                {
+                    "ingredient": "Carottes",
+                    "quantity": 3
+                },
+                {
+                    "ingredient": "Oignon",
+                    "quantity": 2
+                },
+                {
+                    "ingredient": "Lardons",
+                    "quantity": 150,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Vin rouge",
+                    "quantity": 75,
+                    "unit": "cl"
+                },
+                {
+                    "ingredient": "Farine",
+                    "quantity": 3,
+                    "unit": "cuillères à soupe"
+                },
+                {
+                    "ingredient": "Huile d'olive",
+                    "quantity": 2,
+                    "unit": "cuillères à soupe"
+                },
+                {
+                    "ingredient": "Bouquet garni"
+                },
+                {
+                    "ingredient": "Sel",
+                    "quantity": 1,
+                    "unit": "pincée"
+                },
+                {
+                    "ingredient": "Poivre",
+                    "quantity": 1,
+                    "unit": "pincée"
+                }
+            ],
+            "time": 210,
+            "description": "Couper le bœuf en cubes d'environ 3 cm. Éplucher les carottes et les couper en rondelles. Éplucher les oignons et les émincer. Dans une cocotte, faire chauffer l'huile d'olive et y faire revenir les lardons. Ajouter les cubes de bœuf et les faire dorer sur toutes les faces. Ajouter les oignons et les carottes, puis la farine. Mélanger bien et verser le vin rouge. Ajouter le bouquet garni, le sel et le poivre. Porter à ébullition, puis réduire le feu et laisser mijoter à feu doux pendant environ 3 heures. Servir chaud avec des pommes de terre ou des pâtes.",
+            "appliance": "Cocotte",
+            "ustensils": [
+                "Couteau",
+                "Économe",
+                "Cuillère en bois"
+            ]
+        },
+        {
+            "id": 58,
+            "name": "Tarte aux poires",
+            "servings": 6,
+            "ingredients": [
+                {
+                    "ingredient": "Pâte feuilletée",
+                    "quantity": 1,
+                    "unit": "pâte"
+                },
+                {
+                    "ingredient": "Poires",
+                    "quantity": 3
+                },
+                {
+                    "ingredient": "Oeufs",
+                    "quantity": 2
+                },
+                {
+                    "ingredient": "Crème fraîche",
+                    "quantity": 20,
+                    "unit": "cl"
+                },
+                {
+                    "ingredient": "Sucre",
+                    "quantity": 100,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Poudre d'amande",
+                    "quantity": 80,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Beurre",
+                    "quantity": 30,
+                    "unit": "grammes"
+                }
+            ],
+            "time": 60,
+            "description": "Préchauffer le four à 180°C. Étaler la pâte feuilletée et la placer dans un moule à tarte. Éplucher et couper les poires en quartiers. Dans un saladier, fouetter les oeufs avec la crème fraîche et le sucre. Ajouter la poudre d'amande et mélanger. Verser cette préparation sur la pâte feuilletée. Ajouter les poires en les enfonçant légèrement dans la préparation. Parsemer de petits morceaux de beurre sur le dessus. Enfourner pour 40 minutes. Laisser refroidir avant de servir.",
+            "appliance": "Four",
+            "ustensils": [
+                "moule à tarte",
+                "saladier",
+                "fouet",
+                "couteau"
+            ]
+        },
+        {
+            "id": 59,
+            "name": "Salade de poulet grillé",
+            "servings": 2,
+            "ingredients": [
+                {
+                    "ingredient": "Blanc de poulet",
+                    "quantity": 400,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Salade",
+                    "quantity": 200,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Tomate",
+                    "quantity": 2
+                },
+                {
+                    "ingredient": "Avocat",
+                    "quantity": 1
+                },
+                {
+                    "ingredient": "Oignon rouge",
+                    "quantity": 1
+                },
+                {
+                    "ingredient": "Vinaigrette",
+                    "quantity": 2,
+                    "unit": "cuillères à soupe"
+                }
+            ],
+            "time": 20,
+            "description": "Faire cuire le poulet sur le grill pendant 10 minutes. Laisser refroidir. Couper la salade en morceaux et la placer dans un saladier. Ajouter les tomates, l'avocat et l'oignon rouge coupés en dés. Ajouter le poulet grillé et la vinaigrette. Bien mélanger et servir.",
+            "appliance": "Grill",
+            "ustensils": [
+                "Saladier",
+                "Couteau",
+                "Planche à découper"
+            ]
+        },
+        {
+            "id": 60,
+            "name": "Muffins aux myrtilles",
+            "servings": 6,
+            "ingredients": [
+                {
+                    "ingredient": "Farine",
+                    "quantity": 250,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Sucre",
+                    "quantity": 100,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Beurre",
+                    "quantity": 75,
+                    "unit": "grammes"
+                },
+                {
+                    "ingredient": "Lait",
+                    "quantity": 12,
+                    "unit": "cl"
+                },
+                {
+                    "ingredient": "Oeuf",
+                    "quantity": 2
+                },
+                {
+                    "ingredient": "Levure chimique",
+                    "quantity": 1,
+                    "unit": "sachet"
+                },
+                {
+                    "ingredient": "Sel",
+                    "quantity": 1,
+                    "unit": "pincée"
+                },
+                {
+                    "ingredient": "Myrtilles",
+                    "quantity": 150,
+                    "unit": "grammes"
+                }
+            ],
+            "time": 30,
+            "description": "Préchauffer le four à 180°C. Dans un saladier, mélanger la farine, le sucre, la levure et le sel. Ajouter les oeufs, le lait et le beurre fondu. Bien mélanger. Ajouter les myrtilles et mélanger délicatement. Répartir la pâte dans des moules à muffins. Enfourner pendant 20 minutes.",
+            "appliance": "Four",
+            "ustensils": [
+                "Saladier",
+                "Balance",
+                "Moule à muffins",
+                "Cuillère à soupe"
+            ]
         }
     ]
 }
