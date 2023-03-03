@@ -180,9 +180,7 @@ async function launchApp() {
 launchApp()
 
 $tagsOpener.forEach(btn => btn.addEventListener('click', e => {
-    console.log('clic', e.target.parentElement.getAttribute('aria-expanded'))
     const value =  e.target.parentElement.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
-    console.log(value)
     $tagsOpener.forEach(list => list.parentElement.setAttribute('aria-expanded', 'false'))
     e.target.parentElement.setAttribute('aria-expanded', value)
 }))
