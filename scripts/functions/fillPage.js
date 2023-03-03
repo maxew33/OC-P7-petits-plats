@@ -62,8 +62,8 @@ export function fillPage(recipes) {
     }
 
     recipes.forEach(recipe => {
-        const recipeInfos = [[recipe['name']], recipe['name'].split(/[\s']/), recipe['description'].split(/[\s']/)]
-        recipe['ingredients'].forEach(ingredient => recipeInfos.push([ingredient['ingredient']], ingredient['ingredient'].split(/[\s']/)))
+        const recipeInfos = [[recipe.name], recipe.name.split(/[\s']/), recipe.description.split(/[\s']/)]
+        recipe.ingredients.forEach(ingredient => recipeInfos.push([ingredient.ingredient], ingredient.ingredient.split(/[\s']/)))
                 
         recipeInfos.forEach(info => getWords(info, recipe.id))
     })
