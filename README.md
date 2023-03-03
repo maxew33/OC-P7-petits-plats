@@ -21,7 +21,7 @@ Recherche de recettes de cuisine avec options multiples :
 * par ustensiles
 
 ## Ressources
-* [Maquettes]()
+* [Maquettes](https://www.figma.com/file/xqeE1ZKlHUWi2Efo8r73NK)
 * [Fiche d'investigation]()
 * []
 
@@ -37,45 +37,51 @@ Recherche de recettes de cuisine avec options multiples :
 ### résultats des tests
 
 * mot recherché : "coco" (mot qui apparait dans des titres, ingrédients et ustensiles)
-| nb recettes |  bubble sort  |  binary sort  |
-|:-----------:|---------------|---------------|
-| 50          |      100%     |     79.77%    |
-| 60          |      100%     |     84.16%    |
+
+| nb recettes | bubble sort  | binary sort |
+| :---: | :----: | :---: |
+| 50 | **100%** | 79.77% |
+| 60 | **100%** | 84.16% |
 
 
 * mot recherché : "cho" (mot qui apparait dans des titres, ingrédients et description)
-| nb recettes |  bubble sort  |  binary sort  |
-|:-----------:|---------------|---------------|
-| 50          |      100%     |     57.92%    |
-| 60          |      100%     |     77.46%    |
+
+| nb recettes | bubble sort  | binary sort |
+| :---: | :----: | :---: |
+| 50 | **100%** | 57.92% |
+| 60 | **100%** | 77.46% |
 
 
-* mot recherché : "coquille" (mot qui n'apparait que dans la descriptiopn d'une seule recette)
-| nb recettes |  bubble sort  |  binary sort  |
-|:-----------:|---------------|---------------|
-| 50          |      100%     |     71.53%    |
-| 60          |     84.64%    |      100%     |
+* mot recherché : "coquille" (mot qui n'apparait que dans la description d'une seule recette)
+
+| nb recettes | bubble sort  | binary sort |
+| :---: | :----: | :---: |
+| 50 | **100%** | 71.53% |
+| 60 | 84.64% | **100%** |
 
 
 * mot recherché : "limonade de coco" (nom d'une seule recette)
-| nb recettes |  bubble sort  |  binary sort  |
-|:-----------:|---------------|---------------|
-| 50          |      100%     |     90.36%    |
-| 60          |     74.04%    |      100%     |
+
+| nb recettes | bubble sort  | binary sort |
+| :---: | :----: | :---: |
+| 50 | **100%** | 90.36% |
+| 60 | 74.04% | **100%** |
 
 
 * mot recherché : "fenouil" (mot qui n'apparait pas)
-| nb recettes |  bubble sort  |  binary sort  |
-|:-----------:|---------------|---------------|
-| 50          |      100%     |     79.61%    |
-| 60          |     90.35%    |      100%     |
+
+| nb recettes | bubble sort  | binary sort |
+| :---: | :----: | :---: |
+| 50 | **100%** | 79.61% |
+| 60 | 90.35% | **100%** |
 
 
 * mot recherché : "une" (mot qui apparait le plus souvent)
-| nb recettes |  bubble sort  |  binary sort  |
-|:-----------:|---------------|---------------|
-| 50          |      100%     |     80.33%    |
-| 60          |     95.26%    |      100%     |
+
+| nb recettes | bubble sort  | binary sort |
+| :---: | :----: | :---: |
+| 50 | **100%** | 80.33% |
+| 60 | 95.26% | **100%** |
 
 
 
