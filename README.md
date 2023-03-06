@@ -23,7 +23,7 @@ Recherche de recettes de cuisine avec options multiples :
 ## Ressources
 
 * [Maquettes](https://www.figma.com/file/xqeE1ZKlHUWi2Efo8r73NK)
-* [Fiche d'investigation](https://github.com/maxew33/petits-plats/blob/binarySort/fiche%20investigation.pdf)
+* [Fiche d'investigation](https://github.com/maxew33/petits-plats/blob/main/fiche%20investigation.pdf)
 
 ## Demo
 
@@ -34,7 +34,7 @@ Recherche de recettes de cuisine avec options multiples :
 
 ### jsben.ch
 
-[50 recettes](https://jsben.ch/st8sB) / [60 recettes](https://jsben.ch/U2ICL)
+[25 recettes](https://jsben.ch/IoWvg) / [50 recettes](https://jsben.ch/st8sB) / [60 recettes](https://jsben.ch/U2ICL)
 
 ### résultats des tests
 
