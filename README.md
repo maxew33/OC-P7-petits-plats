@@ -42,6 +42,7 @@ Recherche de recettes de cuisine avec options multiples :
 
 | nb recettes | bubble sort  | binary sort |
 | :---: | :----: | :---: |
+| 25 | **100%** | 58.65% |
 | 50 | **100%** | 79.77% |
 | 60 | **100%** | 84.16% |
 
@@ -50,6 +51,7 @@ Recherche de recettes de cuisine avec options multiples :
 
 | nb recettes | bubble sort  | binary sort |
 | :---: | :----: | :---: |
+| 25 | **100%** | 52.53% |
 | 50 | **100%** | 57.92% |
 | 60 | **100%** | 77.46% |
 
@@ -58,6 +60,7 @@ Recherche de recettes de cuisine avec options multiples :
 
 | nb recettes | bubble sort  | binary sort |
 | :---: | :----: | :---: |
+| 25 | **100%** | 56.88% |
 | 50 | **100%** | 71.53% |
 | 60 | 84.64% | **100%** |
 
@@ -66,6 +69,7 @@ Recherche de recettes de cuisine avec options multiples :
 
 | nb recettes | bubble sort  | binary sort |
 | :---: | :----: | :---: |
+| 25 | **100%** | 55.95% |
 | 50 | **100%** | 90.36% |
 | 60 | 74.04% | **100%** |
 
@@ -74,6 +78,7 @@ Recherche de recettes de cuisine avec options multiples :
 
 | nb recettes | bubble sort  | binary sort |
 | :---: | :----: | :---: |
+| 25 | **100%** | 54.79% |
 | 50 | **100%** | 79.61% |
 | 60 | 90.35% | **100%** |
 
@@ -82,6 +87,7 @@ Recherche de recettes de cuisine avec options multiples :
 
 | nb recettes | bubble sort  | binary sort |
 | :---: | :----: | :---: |
+| 25 | **100%** | 56.10% |
 | 50 | **100%** | 80.33% |
 | 60 | 95.26% | **100%** |
 
