@@ -34,13 +34,13 @@ Recherche de recettes de cuisine avec options multiples :
 
 ### jsben.ch
 
-[25 recettes](https://jsben.ch/IoWvg) / [50 recettes](https://jsben.ch/st8sB) / [60 recettes](https://jsben.ch/U2ICL)
+[25 recettes](https://jsben.ch/Y7KNU) / [50 recettes](https://jsben.ch/gNZJ0) / [60 recettes](https://jsben.ch/2QcFD)
 
 ### résultats des tests
 
 * mot recherché : "coco" (mot qui apparait dans des titres, ingrédients et ustensiles)
 
-| nb recettes | bubble sort  | binary sort |
+| nb recettes | linear sort  | binary sort |
 | :---: | :----: | :---: |
 | 25 | **100%** | 58.65% |
 | 50 | **100%** | 79.77% |
@@ -49,7 +49,7 @@ Recherche de recettes de cuisine avec options multiples :
 
 * mot recherché : "cho" (mot qui apparait dans des titres, ingrédients et description)
 
-| nb recettes | bubble sort  | binary sort |
+| nb recettes | linear sort  | binary sort |
 | :---: | :----: | :---: |
 | 25 | **100%** | 52.53% |
 | 50 | **100%** | 57.92% |
@@ -58,7 +58,7 @@ Recherche de recettes de cuisine avec options multiples :
 
 * mot recherché : "coquille" (mot qui n'apparait que dans la description d'une seule recette)
 
-| nb recettes | bubble sort  | binary sort |
+| nb recettes | linear sort  | binary sort |
 | :---: | :----: | :---: |
 | 25 | **100%** | 56.88% |
 | 50 | **100%** | 71.53% |
@@ -67,7 +67,7 @@ Recherche de recettes de cuisine avec options multiples :
 
 * mot recherché : "limonade de coco" (nom d'une seule recette)
 
-| nb recettes | bubble sort  | binary sort |
+| nb recettes | linear sort  | binary sort |
 | :---: | :----: | :---: |
 | 25 | **100%** | 55.95% |
 | 50 | **100%** | 90.36% |
@@ -76,7 +76,7 @@ Recherche de recettes de cuisine avec options multiples :
 
 * mot recherché : "fenouil" (mot qui n'apparait pas)
 
-| nb recettes | bubble sort  | binary sort |
+| nb recettes | linear sort  | binary sort |
 | :---: | :----: | :---: |
 | 25 | **100%** | 54.79% |
 | 50 | **100%** | 79.61% |
@@ -85,7 +85,7 @@ Recherche de recettes de cuisine avec options multiples :
 
 * mot recherché : "une" (mot qui apparait le plus souvent)
 
-| nb recettes | bubble sort  | binary sort |
+| nb recettes | linear sort  | binary sort |
 | :---: | :----: | :---: |
 | 25 | **100%** | 56.10% |
 | 50 | **100%** | 80.33% |
