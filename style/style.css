@@ -208,7 +208,6 @@ header {
 @media screen and (max-width: 1080px) {
   .card {
     width: 45vw;
-    height: 40vw;
   }
 }
 @media screen and (max-width: 768px) {
