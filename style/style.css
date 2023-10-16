@@ -164,6 +164,7 @@ header {
   background: #C7BEBE;
   width: 100%;
   height: 50%;
+  object-fit: cover;
   border-radius: 5px 5px 0 0;
 }
 
@@ -341,10 +342,6 @@ header {
   color: white;
   padding-left: 15px;
 }
-.tags__list .tags__input::-moz-placeholder {
-  color: white;
-  opacity: 0.5;
-}
 .tags__list .tags__input::placeholder {
   color: white;
   opacity: 0.5;
@@ -417,9 +414,6 @@ section {
   padding: 0 2rem;
   width: calc(100% - 4rem);
 }
-.search__input #search__text::-moz-placeholder {
-  color: #C7BEBE;
-}
 .search__input #search__text::placeholder {
   color: #C7BEBE;
 }
@@ -459,4 +453,4 @@ html {
 body {
   font-family: "Lato", sans-serif;
   overflow-x: hidden;
-}/*# sourceMappingURL=style.css.map */
+}

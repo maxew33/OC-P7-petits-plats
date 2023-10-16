@@ -2,6 +2,7 @@ export default class Recipe{
     constructor(data){
         this._id = data.id
         this._name = data.name
+        this._image = data.image
         this._servings = data.servings
         this._ingredients = data.ingredients
         this._time = data.time
@@ -16,6 +17,10 @@ export default class Recipe{
 
     get name(){
         return(this._name)
+    }
+
+    get image(){
+        return(this._image)
     }
 
     get servings(){

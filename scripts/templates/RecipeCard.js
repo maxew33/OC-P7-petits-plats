@@ -4,12 +4,11 @@ export default class RecipeCard{
     }
 
     createRecipeCard(){        
-        const {name, ingredients, time, description, id} = this._recipe
+        const {name, ingredients, time, description, image, id} = this._recipe
 
         const cardContent = `
         <article class="card" data-id=${id}>
-            <div class="card__img">
-            </div>
+            <img src="./asset/img/recipies/${image}" alt=${name} class="card__img">
             <div class="card__text">
                 <div class="card__section">            
                     <p class="card__element card__name">${name}</p>
