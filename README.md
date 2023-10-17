@@ -1,6 +1,6 @@
 # Les Petits plats
 
-![Logo](https://raw.githubusercontent.com/maxew33/petits-plats/main/asset/img/logo.png)
+![Logo](https://raw.githubusercontent.com/maxew33/petits-plats/main/assets/img/logo.png)
 
 ## Compétences cibles
 

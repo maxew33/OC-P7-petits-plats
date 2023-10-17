@@ -8,7 +8,7 @@ export default class RecipeCard{
 
         const cardContent = `
         <article class="card" data-id=${id}>
-            <img src="./asset/img/recipies/${image}" alt=${name} class="card__img">
+            <img src="./assets/img/recipies/${image}" alt=${name} class="card__img">
             <div class="card__text">
                 <div class="card__section">            
                     <p class="card__element card__name">${name}</p>
